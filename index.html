@@ -1,5 +1,98 @@
 <html>
+<head>
+  <title>lorenzozanca.com</title>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+</head>
 <body>
-  <h1>ciao</h1>
+  <div>
+      <div class="animate-me">
+        lorenzozanca.com
+      </div>
+      <div class="animate-me">
+        lorenzozanca.com
+      </div>
+      <div class="animate-me">
+        lorenzozanca.com
+      </div>
+      <div class="animate-me">
+        lorenzozanca.com
+      </div>
+      <div class="animate-me">
+        lorenzozanca.com
+      </div>
+      <div class="animate-me">
+        lorenzozanca.com
+      </div>
+      <div class="animate-me">
+        lorenzozanca.com
+      </div>
+      <div class="animate-me">
+        lorenzozanca.com
+      </div>
+      <div class="animate-me">
+        lorenzozanca.com
+      </div>
+        <div class="animate-me">
+        lorenzozanca.com
+      </div>
+        <div class="animate-me">
+        lorenzozanca.com
+      </div>
+    </div>
+  
+  <style>
+    body {
+        background-color: #222;
+        color: #fff;
+        font-weight: 400;
+        font-size: 2vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        text-transform: uppercase;
+        font-family: "Khula", sans-serif;
+        height: 100vh;
+        box-sizing: border-box;
+        letter-spacing: 6px;
+        margin: 0;
+        line-height: 1.2;
+      }
+
+      span {
+        display: inline-block;
+      }
+  </style>
+  
+  <script>
+    import Letterize from "https://cdn.skypack.dev/letterizejs@2.0.0";
+    const test = new Letterize({
+        targets: ".animate-me"
+      });
+
+      const animation = anime.timeline({
+        targets: test.listAll,
+        delay: anime.stagger(100, {
+          grid: [test.list[0].length, test.list.length],
+          from: "center"
+        }),
+        loop: true
+      });
+
+      animation
+        .add({
+          scale: 0.5
+        })
+        .add({
+          letterSpacing: "10px"
+        })
+        .add({
+          scale: 1
+        })
+        .add({
+          letterSpacing: "6px"
+        });
+  </script>
+  
  </body>
 </html>
