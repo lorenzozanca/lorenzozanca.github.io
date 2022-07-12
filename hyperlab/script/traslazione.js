@@ -128,7 +128,7 @@ function renderHeader() {
 
   if (angolo >= 360){
     angolo == 0;
-  }a
+  }
 
   var radiante = (Math.PI/180) * angolo;
 
