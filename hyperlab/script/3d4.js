@@ -60,7 +60,7 @@ const MapTexture = textureLoader.load("../../../media/background.jpg");
 
 uniforms = {
                 "time": { value: 1.0 },
-                "colorTexture": { value: new THREE.TextureLoader().load( '../../../media/pietra2.jpg' ) }
+                "colorTexture": { value: new THREE.TextureLoader().load( '../../../media/2.jpg' ) }
             };
 
 uniforms[ "colorTexture" ].value.wrapS = uniforms[ "colorTexture" ].value.wrapT = THREE.RepeatWrapping;
