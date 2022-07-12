@@ -124,7 +124,7 @@ function renderHeader() {
   const delta = clock.getDelta();
   uniforms[ 'time' ].value += 0.05 * delta;
 
-  angolo = angolo + 0.7;
+  angolo = angolo + 0.15;
 
   if (angolo >= 360){
     angolo == 0;
