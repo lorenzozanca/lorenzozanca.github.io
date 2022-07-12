@@ -26,7 +26,7 @@ thickness: 1,
 });
 
 const textureLoaderNormal = new THREE.TextureLoader();
-const normalMapTexture = textureLoaderNormal.load("../../../media/normalRought.webp");
+const normalMapTexture = textureLoaderNormal.load("../../../media/pazza.png");
 normalMapTexture.wrapS = THREE.RepeatWrapping;
 normalMapTexture.wrapT = THREE.RepeatWrapping;
 
