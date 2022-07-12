@@ -33,12 +33,12 @@ normalMapTexture.wrapT = THREE.RepeatWrapping;
 const materialHeader2 = new THREE.MeshPhysicalMaterial({
     depthTest: true,
     depthWrite: false,
-    emissive: 0x00211b,
-    clearcoat: 0.8,
-    clearcoatRoughness: 0.01,
-    reflectivity: 0.4,
+    emissive: 0x032e1d,
+    clearcoat: 0.4,
+    clearcoatRoughness: 0.1,
+    reflectivity: 1,
     metalness: 0, 
-    roughness: 0.25,  
+    roughness: 0.1,  
     transmission: 0.99,  
     thickness: 1,
 
@@ -117,7 +117,7 @@ function renderHeader() {
   const delta = clock.getDelta();
   uniforms[ 'time' ].value += 0.05 * delta;
 
-  meshD.rotation.z += delta * 0.03
+  meshD.rotation.z += delta * 0.06
 
   //menuHeader.rotation.z += delta * 0.1
 
