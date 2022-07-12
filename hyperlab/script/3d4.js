@@ -26,7 +26,7 @@ thickness: 1,
 });
 
 const textureLoaderNormal = new THREE.TextureLoader();
-const normalMapTexture = textureLoaderNormal.load("../../../media/pietra2.jpg");
+const normalMapTexture = textureLoaderNormal.load("../../../media/2.jpg");
 normalMapTexture.wrapS = THREE.RepeatWrapping;
 normalMapTexture.wrapT = THREE.RepeatWrapping;
 
