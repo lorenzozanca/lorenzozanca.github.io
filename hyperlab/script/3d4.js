@@ -33,12 +33,12 @@ normalMapTexture.wrapT = THREE.RepeatWrapping;
 const materialHeader2 = new THREE.MeshPhysicalMaterial({
     depthTest: true,
     depthWrite: false,
-    emissive: 0x00211b,
-    clearcoat: 0.8,
-    clearcoatRoughness: 0.01,
+    emissive: 0x032e1d,
+    clearcoat: 0.2,
+    clearcoatRoughness: 0.1,
     reflectivity: 0.4,
     metalness: 0, 
-    roughness: 0.25,  
+    roughness: 0.1,  
     transmission: 0.99,  
     thickness: 1,
 
@@ -75,7 +75,7 @@ const materialD = new THREE.MeshPhysicalMaterial( {
 const meshD = new THREE.Mesh( geometryD, materialD );
 meshD.position.x = 4;
 meshD.position.y = 4;
-meshD.position.z = -10;
+meshD.position.z = -12;
 sceneHeader.add( meshD );
 
 window.addEventListener("mousemove", onmousemoveheader, false);
@@ -108,13 +108,6 @@ function onmousemoveheader(event) {
   // console.log(sphereA.position.x-1.5, sphereA.position.y-1);
 }
 
-var numero = 0.01;
-var numero2 = 0.01;
-var uno = 4;
-
-var angolo = 0;
-var raggio = 5;
-
 renderHeader();
 
 function renderHeader() {
@@ -124,16 +117,7 @@ function renderHeader() {
   const delta = clock.getDelta();
   uniforms[ 'time' ].value += 0.05 * delta;
 
-  angolo = angolo + 0.15;
-
-  if (angolo >= 360){
-    angolo == 0;
-  }
-
-  var radiante = (Math.PI/180) * angolo;
-
-  meshD.position.x = Math.cos(radiante) * raggio;
-  meshD.position.y = Math.sin(radiante) * raggio;
+  meshD.rotation.z += delta * 0.06
 
   //menuHeader.rotation.z += delta * 0.1
 
