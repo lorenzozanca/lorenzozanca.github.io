@@ -1,19 +1,28 @@
 <section id="lineSection">
-    <div class="device bgD" id="devices" style="display: none;">
-        <img src="../media/img/device/1.svg">
-        <img src="../media/img/device/2.svg">
-        <img src="../media/img/device/3.svg">
-        <img src="../media/img/device/4.svg">
-        <img src="../media/img/device/5.svg">
-        <img src="../media/img/device/6.svg">
+    <div class="device bgD" id="basedevice" style="display: none;">
+        <img id="rotateme1" src="../media/img/icons/Base.svg">
+        <img id="rotateme2" src="../media/img/icons/Base.svg">
+        <img id="rotateme3" src="../media/img/icons/Base.svg">
+        <img id="rotateme4" src="../media/img/icons/Base.svg">
+        <img id="rotateme5" src="../media/img/icons/Base.svg">
+        <img id="rotateme6" src="../media/img/icons/Base.svg">
     </div>
-    <div class="device bgDG" id="glitched" style="display: none;">
-        <img src="../media/img/device/1g.svg">
-        <img src="../media/img/device/2g.svg">
-        <img src="../media/img/device/3g.svg">
-        <img src="../media/img/device/4g.svg">
-        <img src="../media/img/device/5g.svg">
-        <img src="../media/img/device/6g.svg">
+    <div class="device bgD" id="devices" style="display: none;">
+        <img src="../media/img/icons/Phone.svg">
+        <img src="../media/img/icons/Ear.svg">
+        <img src="../media/img/icons/Pc.svg">
+        <img src="../media/img/icons/Watch.svg">
+        <img src="../media/img/icons/Cam.svg">
+        <img src="../media/img/icons/Glasses.svg">
+    </div>
+
+    <div class="device bgDG piccolo" id="glitched" style="display: none;">
+        <img src="../media/img/icons/Glitch.svg">
+        <img src="../media/img/icons/Glitch.svg">
+        <img src="../media/img/icons/Glitch.svg">
+        <img src="../media/img/icons/Glitch.svg">
+        <img src="../media/img/icons/Glitch.svg">
+        <img src="../media/img/icons/Glitch.svg">
     </div>
 
     <div id="hider" class="hider"></div>
@@ -40,11 +49,12 @@
     </div>
 
     <!-- <img style="position: relative; width: 30%; left: 35%; top: 280vh; opacity: 1;" src="../media/img/device/circle.svg"> -->
-    <img id="brain" class="brain brainPiccolo" src="../media/img/device/bbrain.svg">
+    <img id="brain" class="brain brainPiccolo" src="../media/img/icons/brain.svg">
 </section>
 
 <script>
 
+const basedevice = document.getElementById("basedevice");
 const devices = document.getElementById("devices");
 const glitched = document.getElementById("glitched");
 const lines = document.getElementById("lines");
@@ -59,11 +69,22 @@ function line() {
     if ((0.45 * window.innerHeight) >= lineY.top && 0 <= (lineY.bottom + window.innerHeight)){
         //mostra linee, device fissi e blocco nero
 
+        document.getElementById("rotateme1").style.transform += "rotate(3deg)";
+        document.getElementById("rotateme2").style.transform += "rotate(3deg)";
+        document.getElementById("rotateme3").style.transform += "rotate(3deg)";
+        document.getElementById("rotateme4").style.transform += "rotate(3deg)";
+        document.getElementById("rotateme5").style.transform += "rotate(3deg)";
+        document.getElementById("rotateme6").style.transform += "rotate(3deg)";
+
         lines.style.display = "block";
         brain.style.display = "block";
 
+        basedevice.style.display = "block";
+        basedevice.style.position = "fixed";
+
         devices.style.display = "block";
         devices.style.position = "fixed";
+
         hider.style.display = "block";
 
         //prima convergenza
@@ -73,16 +94,20 @@ function line() {
             //console.log("convergenza = " + converge1.top);
             //rimpicciolisci device e modifica blocco nero
             devices.classList.add("piccolo");
+            basedevice.classList.add("piccolo");
+
             hider.classList.add("hider2");
 
             //passa per il muro
             var crypto = document.getElementById("crypto").getBoundingClientRect();
-            var pad = 0.12 * window.innerHeight;
+            var pad = 0.06 * window.innerHeight;
 
             if((0.2 * (window.innerHeight + pad)) > crypto.top && converge1.top < 0){
                 //console.log("muro = " + crypto.top);
                 //sostituisci device
-                devices.style.display = "none";
+
+                // basedevice.style.display = "none";
+                // devices.style.display = "none";
                 glitched.style.display = "block";
 
                 //seconda convergenza
@@ -91,12 +116,16 @@ function line() {
                 if((0.3 * window.innerHeight) >= converge2.top){
                     //console.log("convergenza 2 = " + converge2.top);
                     //rimpicciolisci glitch e fai sparire tutto
-                    glitched.style.transform = "scale(0.3)";
-                    devices.style.display = "none";
+                    glitched.classList.add("piccolissimo");
+                    devices.classList.add("piccolissimo");
+                    basedevice.classList.add("piccolissimo");
+
                     brain.classList.remove("brainPiccolo");
                     brain.classList.add("brainGrande");
                     if((0.1 * window.innerHeight) >= converge2.top){
                         glitched.style.display = "none";
+                        devices.style.display = "none";
+                        basedevice.style.display = "none";
 
                         var end = brain.getBoundingClientRect();
                         if((-0.15 * window.innerHeight) > end.top){
@@ -109,7 +138,10 @@ function line() {
                     }
                 } else {
                     // console.log("NO convergenza 2");
-                    glitched.style.transform = "scale(0.8)";
+                    basedevice.classList.remove("piccolissimo");
+                    devices.classList.remove("piccolissimo");
+                    glitched.classList.remove("piccolissimo");
+
                     glitched.style.display = "block";
                     brain.classList.remove("brainGrande");
                     brain.classList.add("brainPiccolo");
@@ -118,19 +150,25 @@ function line() {
             }else{
                 //console.log("NO muro");
                 //sostituisci device
-                devices.style.display = "block";
+
+                // basedevice.style.display = "block";
+                // devices.style.display = "block";
                 glitched.style.display = "none";
             }
 
         }else{
             //console.log("NO convergenza");
             //device normali device e modifica blocco nero
+            basedevice.classList.remove("piccolo");
             devices.classList.remove("piccolo");
+
             hider.classList.remove("hider2");
         }
 
     } else {
         //nascondi linee, device fissi e blocco nero
+        basedevice.style.display = "none";
+        basedevice.style.position = "absolute";
         devices.style.display = "none";
         devices.style.position = "absolute";
         lines.style.display = "none";
