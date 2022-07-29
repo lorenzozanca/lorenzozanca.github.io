@@ -303,8 +303,8 @@ a:hover {
 }
 .device img { width: 11vw; }
 
-.bgD{ position: absolute; }
-.bgDG{ position: fixed; }
+.bgD{ position: absolute; z-index: 3; }
+.bgDG{ position: fixed; z-index: 2; }
 
 .line{
     position: absolute;
@@ -368,6 +368,11 @@ a:hover {
 
 .piccolo{
     transform: scale(0.8);
+    transition: all .3s ease-in-out;
+}
+
+.piccolissimo{
+    transform: scale(0.3);
     transition: all .3s ease-in-out;
 }
 
