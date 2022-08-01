@@ -5,6 +5,12 @@
 
 .menu{ left: 10vw; }
 
+.menu li{
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 5.5vw;
+}
+
 .menu ul{
     opacity: 1;
     visibility: visible;
@@ -18,7 +24,7 @@
 
 .imagine p{ font-size: 40px; }
 
-.imagine{ height: 50vh; }
+.imagine{ height: auto; }
 
 /* ---------- VIDEO BACKGROUND ---------- */
 
@@ -85,10 +91,37 @@
 .hider{ height: 28vh; }
 .hider2{ height: 28vh; }
 
+.secure { padding-top: 35vh; }
 .secure p{ font-size: 40px; }
 
-/* ---------- SCANNER ---------- */
+/* ---------- SCANNER OLD ---------- */
+/* ---------- SCANNER NEW ---------- */
+
+.scrollVideoText{ width: 60vw; }
+
+.scrollVideoText h1{ font-size: 20px; }
+
 /* ---------- EVERYTHING ---------- */
+
+/* .aaa{
+    left: 4vw;
+    top:20vh;
+}
+.bbb{
+    left: 26vw;
+    top: 20vh;
+}
+.ccc{
+    color: #ED1E40;
+    left: 60vw;
+    top: 40vh;
+}
+.ddd{
+    right: 4vw;
+    top: 40vh;
+    transition: right 0.3s;
+} */
+
 /* ---------- ABOUT ME ---------- */
 /* ---------- FORM ---------- */
 

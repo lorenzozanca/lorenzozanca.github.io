@@ -496,7 +496,7 @@ a:hover {
     bottom: 0;
 }
 
-/* ---------- SCANNER ---------- */
+/* ---------- SCANNER OLD ---------- */
 
 #sotto {
     height:225vh;
@@ -521,6 +521,54 @@ a:hover {
     bottom: 10vh;
     left: 5vw;
     font-size: 36px;
+}
+
+/* ---------- SCANNER NEW ---------- */
+
+.scrolling-video-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+
+    overflow: hidden;
+
+    /* height: 100%; */
+    width: 177.77777778vh; /* 100 * 16 / 9 */
+    min-width: 100%;
+    max-width: 100vw;
+    max-height: 56.25vw; /* 100 * 9 / 16 */
+}
+
+.scrollVideoText{
+    position: absolute;
+    width: 30vw;
+    line-height: 1;
+    font-weight: bold;
+}
+
+.scrollVideoText h1{
+    font-size: 40px;
+    transition: all .3s ease-in-out;
+    opacity: 0;
+}
+
+.scrollHead{
+    text-align: right;
+    right: 5vh;
+    bottom: 20vw;
+}
+.scrollChest{
+    left: 5vh;
+    bottom: 20vw;
+}
+.scrollArms{
+    text-align: right;
+    right: 5vh;
+    bottom: 20vw;
+}
+.scrollBust{
+    left: 5vh;
+    bottom: 10vw;
 }
 
 /* ---------- EVERYTHING ---------- */
@@ -560,6 +608,7 @@ a:hover {
     padding-top: 20vh;
     z-index: 1;
     padding-left: 5vh;
+    padding-right: 5vh;
     padding-bottom: 5vh;
     font-size: 6vw;
     text-align: center;
