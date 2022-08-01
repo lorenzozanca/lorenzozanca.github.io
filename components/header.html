@@ -1,0 +1,37 @@
+<div id="navbar" class="navbar">
+    <nav id="menu" class="menu">
+        <div>
+            <a href="../">
+                <img src="../media/img/svg/liv.svg" alt="">
+            </a>
+        </div>
+        <ul>
+            <li>
+                <a href="../about/" id="menucolor">
+                    About
+                </a>
+            </li>
+            <li>
+                <a href="../contact/" id="menucolor2">
+                    Contact
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<script>
+var prevScrollpos = window.pageYOffset;
+
+function menu() {
+    var currentScrollPos = window.pageYOffset;
+    if (prevScrollpos > currentScrollPos) {
+        document.getElementById("navbar").style.top = "0";
+    } else {
+        document.getElementById("navbar").style.top = "-100px";
+    }
+    prevScrollpos = currentScrollPos;
+}
+
+window.addEventListener("scroll", menu);
+</script>
