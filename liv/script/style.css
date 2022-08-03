@@ -120,7 +120,7 @@ a{
 }
 a:hover {
     transition: all .3s ease-in-out;
-    color: #ED1E40;
+    color: #000;
 }
 
 /* ---------- BUTTON ---------- */
@@ -131,7 +131,7 @@ a:hover {
     color: #000;
     border-radius: 20px;
     padding: 10px 25px;
-    background: #e7e7e7;
+    background: #fff;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
