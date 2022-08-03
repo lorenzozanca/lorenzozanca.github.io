@@ -31,13 +31,39 @@ body {
     background-color: #000;
 }
 ::-webkit-scrollbar-thumb {
-    background: #ED1E40;
+    background: #d7d7d7;
     border-radius: 5px;
     -webkit-border-radius: 5px;
 }
 ::-webkit-scrollbar-thumb:hover {
     background: #fff;
 }
+
+.cookies-new{
+    z-index: 10;
+    position: fixed;
+    right: 0;
+    width: 60vw;
+    padding: 2vh;
+    margin: 3vh;
+    font-size: 12px;
+    display: flex;
+    background-color: #00000050;
+    bottom: -100%;
+    transition: all .3s ease-in-out;
+    justify-content: space-evenly;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    align-items: flex-end;
+}
+
+.cookies-new p{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.cookies-new.cookie-active{ bottom:0; }
 
 .cookies-container{
     z-index: 10;
@@ -99,7 +125,7 @@ body {
     height: 10vh;
     align-items: center;
     display: inline-flex;
-    width: 420px;
+    width: 375px;
     right: 2vw;
 }
 
@@ -110,9 +136,10 @@ ul{
 }
 
 li{
-    padding-left: 25px;
-    padding-right: 25px;
-    font-size: 1.1em;
+    padding-left:15px;
+    padding-right: 15px;
+    font-weight: bold;
+    font-size: 15px;
 }
 a{
     color: #fff;
@@ -137,22 +164,27 @@ a:hover {
     position: relative;
     display: inline-block;
     outline: none;
+    border: none;
+}
+
+.exception{
     border: 1px solid #000;
 }
 
 .negative-btn {
     width: 130px;
     height: 40px;
-    color: #000000;
+    color: #fff;
     border-radius: 20px;
     padding: 10px 25px;
-    background: #ffffff;
+    background: #000000;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
     display: inline-block;
     outline: none;
     border: none;
+    border: 1px solid #fff;
 }
 
 /* ---------- DIV AND TEXT ---------- */
