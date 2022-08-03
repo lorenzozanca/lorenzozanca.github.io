@@ -36,10 +36,12 @@ function menu() {
         navbar.classList.add("navBG");
     }
 
-    if (prevScrollpos >= currentScrollPos) {
+    if(currentScrollPos > 5){
+        if (prevScrollpos >= currentScrollPos) {
         navbar.style.top = "0";
-    } else {
-        navbar.style.top = "-100px";
+        } else {
+            navbar.style.top = "-100px";
+        }
     }
     prevScrollpos = currentScrollPos;
 }
