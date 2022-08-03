@@ -43,14 +43,21 @@ body {
     z-index: 10;
     position: fixed;
     width: 100vw;
-    padding: 5vh;
+    padding: 2vh;
+    font-size: 12px;
     display: flex;
-    background-color: black;
+    background-color: #00000050;
+
     bottom: -100%;
     transition: all .3s ease-in-out;
+    justify-content: space-around;
 }
 
 .cookies-container.cookie-active{ bottom:0; }
+
+.cookies-container p{
+    width: calc(100vw - 350px);
+}
 
 .stop-scrolling {
     height: 100%;
@@ -65,35 +72,35 @@ body {
     position: fixed; 
     top:0; 
     left:0; 
-    background-color:#000000c7; 
     z-index: 10; 
     transition: top 0.3s;
+    background-color: #00000000;
+
+    -webkit-transition: background-color 300ms linear;
+    -ms-transition: background-color 300ms linear;
+    transition: background-color 300ms linear;
 }
+
+.navBG{
+    background-color: #000000;
+}
+
+.logo{
+    position: absolute;
+    left: 2vw;
+    height: 10vh;
+    align-items: center;
+    display: inline-flex;
+}
+
 .menu{
     z-index: 2;
     position: absolute;
     height: 10vh;
     align-items: center;
     display: inline-flex;
-    width: 460px;
-    left: 2vw;
-}
-
-li:hover ul.hiddenMenu {
-	opacity: 1;
-	/* right: 100px; */
-	visibility: visible;
-}
-
-.menu:hover ul{
-    opacity: 1;
-    visibility: visible;
-}
-
-.menu ul{
-    opacity: 0;
-    visibility: hidden;
-    transition: all .3s ease-in-out;
+    width: 420px;
+    right: 2vw;
 }
 
 ul{
@@ -105,7 +112,7 @@ ul{
 li{
     padding-left: 25px;
     padding-right: 25px;
-    font-size: 1.5em;
+    font-size: 1.1em;
 }
 a{
     color: #fff;
@@ -121,58 +128,31 @@ a:hover {
 .custom-btn {
     width: 130px;
     height: 40px;
-    color: #fff;
+    color: #000;
     border-radius: 20px;
     padding: 10px 25px;
-    font-family: 'Lato', sans-serif;
-    font-weight: 500;
-    background: #ED1E40;
+    background: #c7c7c7;
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
     display: inline-block;
-     box-shadow:inset 2px 2px 2px 0px #8D1125,
-     7px 7px 20px 0px rgba(0,0,0,.1),
-     4px 4px 5px 0px rgba(0,0,0,.1);
     outline: none;
+    border: 1px solid #000;
 }
-.btn {
-    border: none;
-    color: #fff;
-}
-.btn:after {
-    position: absolute;
-    content: "";
-    width: 0;
-    height: 100%;
-    top: 0;
-    left: 0;
-    border-radius: 20px;
-    direction: rtl;
-    z-index: -1;
-    box-shadow:
-     -7px -7px 20px 0px #8D1125,
-     -4px -4px 5px 0px #8D1125,
-     7px 7px 20px 0px #0002,
-     4px 4px 5px 0px #0001;
-    transition: all 0.3s ease;
-}
-.btn:hover {
+
+.negative-btn {
+    width: 130px;
+    height: 40px;
     color: #000000;
+    border-radius: 20px;
+    padding: 10px 25px;
     background: #ffffff;
-    border-radius: 20px;
-    box-shadow:inset 2px 2px 2px 0px #e7e7e7,
-    7px 7px 20px 0px rgba(0,0,0,.1),
-    4px 4px 5px 0px rgba(0,0,0,.1);
-}
-.btn:hover:after {
-    left: auto;
-    border-radius: 20px;
-    right: 0;
-    width: 100%;
-}
-.btn:active {
-    top: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border: none;
 }
 
 /* ---------- DIV AND TEXT ---------- */
@@ -259,9 +239,11 @@ a:hover {
     visibility: visible;
 }
 .scroll-container {
-    overflow: hidden;
+    overflow: scroll;
 }
 .step {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -587,25 +569,44 @@ a:hover {
 }
 .aaa{
     left: 4vw;
-    top: 40vh;
+    top: 50vh;
 }
 .bbb{
+    position: absolute;
     left: 26vw;
-    top: 40vh;
+    top: 50vh;
 }
 .ccc{
     color: #ED1E40;
     left: 60vw;
-    top: 40vh;
+    top: 50vh;
 }
 .ddd{
+    position: absolute;
     right: 4vw;
-    top: 40vh;
+    top: 50vh;
     transition: right 0.3s;
 }
 
+.fix1{
+    top: 50vh;
+}
+
+.fix1after{
+    top: 150vh !important;
+}
+
+.fix2{
+    top: 50vh;
+    right: 4vw;
+}
+
+.fix2after{
+    top: 150vh !important;
+    right: 8vw !important;
+}
+
 .world{
-    padding-top: 20vh;
     z-index: 1;
     padding-left: 5vh;
     padding-right: 5vh;
@@ -613,10 +614,11 @@ a:hover {
     font-size: 6vw;
     text-align: center;
     font-weight: bold;
-    position: relative;
+    position: absolute;
+    top:35vh;
     width: 100vw;
-    background-color: #fff;
     color: #000;
+    transition: all .3s ease-in-out;
 }
 
 /* ---------- ABOUT ME ---------- */
@@ -631,10 +633,9 @@ a:hover {
 
 .aboutme{
     position: relative;
-    font-size: 3em !important;
     align-content: center;
     vertical-align: middle;
-
+    font-size: 2.5em !important;
     display: flex;
     justify-content: center;
     align-items: center;

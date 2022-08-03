@@ -1,9 +1,24 @@
 @media only screen and (max-width: 600px) {
 
 /* ---------- BASIC HTML ---------- */
+
+.cookies-container{
+    justify-content: flex-end;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.cookies-container p{
+    width: 100vw;
+    margin-bottom: 15px;
+}
+
 /* ---------- MENU ---------- */
 
-.menu{ left: 10vw; }
+.menu{ 
+    left: 10vw;
+    top: 8px;
+}
 
 .menu li{
     padding-left: 15px;
@@ -20,9 +35,11 @@
 
 .richiesta{ display: none; }
 
+.negative-btn { margin-left: 10px;}
+
 /* ---------- DIV AND TEXT ---------- */
 
-.imagine p{ font-size: 40px; }
+.imagine p{ font-size: 6vw; }
 
 .imagine{ height: auto; }
 
@@ -43,9 +60,9 @@
     object-fit: cover;
 }
 
-.step>div { font-size: 40px !important; }
+.step>div { font-size:6vw !important; }
 
-.videotext h1{ font-size: 40px; }
+.videotext h1{ font-size: 6vw; }
 
 /* ---------- COMPARISON ---------- */
 
@@ -91,8 +108,7 @@
 .hider{ height: 28vh; }
 .hider2{ height: 28vh; }
 
-.secure { padding-top: 35vh; }
-.secure p{ font-size: 40px; }
+.secure p{ font-size: 6vw; }
 
 /* ---------- SCANNER OLD ---------- */
 /* ---------- SCANNER NEW ---------- */
@@ -123,16 +139,24 @@
 } */
 
 /* ---------- ABOUT ME ---------- */
+
+.aboutme{
+    font-size: 6vw !important;
+}
 /* ---------- FORM ---------- */
 
 #myForm h3{
-    font-size: 34px;
+    font-size: 6vw;
     padding-bottom: 25px;
 }
 
 .myForm{ width: 80vw; }
 
 /* ---------- FOOTER ---------- */
+
+.foot ul li {
+    font-size: 4.5vw;
+}
 
 .foot{ display: initial; }
 

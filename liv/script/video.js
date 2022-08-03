@@ -38,9 +38,9 @@ function start(){
 
 introVideo.addEventListener('ended',myHandler,false);
 function myHandler(e) {
-    if(document.documentElement.scrollTop == 0){
-        document.documentElement.scrollTop = document.documentElement.scrollTop + window.innerHeight;
-    }
+    // if(document.documentElement.scrollTop == 0){
+    //     document.documentElement.scrollTop = document.documentElement.scrollTop + window.innerHeight;
+    // }
     start();
 }
 

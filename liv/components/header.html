@@ -18,6 +18,7 @@
             </li>
         </ul>
     </nav>
+    
 </div>
 
 <script>
@@ -25,7 +26,7 @@ var prevScrollpos = window.pageYOffset;
 
 function menu() {
     var currentScrollPos = window.pageYOffset;
-    if (prevScrollpos > currentScrollPos) {
+    if (prevScrollpos >= currentScrollPos) {
         document.getElementById("navbar").style.top = "0";
     } else {
         document.getElementById("navbar").style.top = "-100px";
