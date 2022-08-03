@@ -1,10 +1,10 @@
 <div id="navbar" class="navbar">
+    <div class="logo">
+        <a href="../">
+            <img src="../media/img/svg/liv.svg" alt="">
+        </a>
+    </div>
     <nav id="menu" class="menu">
-        <div>
-            <a href="../">
-                <img src="../media/img/svg/liv.svg" alt="">
-            </a>
-        </div>
         <ul>
             <li>
                 <a href="../about/" id="menucolor">
@@ -17,19 +17,29 @@
                 </a>
             </li>
         </ul>
+
+    <button class="btn exception-btn richiesta" data-tf-popup="jzXRJvUw" data-tf-iframe-props="title=Newsletter Signup Form (copy)" data-tf-medium="snippet">Request Access</button><script src="//embed.typeform.com/next/embed.js"></script>
+
     </nav>
-    
 </div>
 
 <script>
 var prevScrollpos = window.pageYOffset;
+var navbar = document.getElementById("navbar");
 
 function menu() {
     var currentScrollPos = window.pageYOffset;
-    if (prevScrollpos >= currentScrollPos) {
-        document.getElementById("navbar").style.top = "0";
+    if(currentScrollPos == 0){
+        navbar.classList.remove("navBG");
+        navbar.style.top = "0";
     } else {
-        document.getElementById("navbar").style.top = "-100px";
+        navbar.classList.add("navBG");
+    }
+
+    if (prevScrollpos >= currentScrollPos) {
+        navbar.style.top = "0";
+    } else {
+        navbar.style.top = "-100px";
     }
     prevScrollpos = currentScrollPos;
 }

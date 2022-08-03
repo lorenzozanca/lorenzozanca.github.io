@@ -1,6 +1,6 @@
 <div class="cookies-new">
-<div class="quit-cookies">
-<img src="../media/img/svg/x.svg">
+<div id="quit-cookies" class="quit-cookies">
+    <img src="../media/img/svg/x.svg">
 </div>
 <h3>Cookie Policy</h3>
 <p>
@@ -8,10 +8,10 @@
     By clicking “Accept”, you consent to the use of the cookies. To find out more, read our <a href="../privacy/">Privacy Policy</a> and <a href="../cookies/">Cookie Policy</a>.
 </p>
 <div>
-    <button id="cookiebtn" class="custom-btn">
+    <button id="accept-cookies" class="btn normal-btn">
         Accept
     </button>
-    <button class="negative-btn" style="margin-left: 10px;">
+    <button id="decline-cookies" class="btn negative-btn" style="margin-left: 10px;">
         Disable All
     </button>
 </div>
@@ -19,11 +19,24 @@
 
 <script>
     const cookies = document.querySelector(".cookies-new");
-    const cookiebtn = document.getElementById("cookiebtn");
+    const accetpt = document.getElementById("accept-cookies");
+    const decline = document.getElementById("decline-cookies");
+    const quit = document.getElementById("quit-cookies");
 
-    cookiebtn.addEventListener("click", () => {
+    accetpt.addEventListener("click", () => {
         cookies.classList.remove("cookie-active");
         localStorage.setItem("cookieBannerDisplayed", "true");
+    });
+
+    quit.addEventListener("click", () => {
+        cookies.classList.remove("cookie-active");
+        localStorage.setItem("cookieBannerDisplayed", "true");
+    });
+
+    decline.addEventListener("click", () => {
+        cookies.classList.remove("cookie-active");
+        localStorage.setItem("cookieBannerDisplayed", "true");
+        console.log("cookies-declined");
     });
 
     setTimeout(() => {
