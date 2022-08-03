@@ -187,6 +187,15 @@ a:hover {
     border: 1px solid #fff;
 }
 
+.richiesta{
+    width: 150px;
+    position: absolute;
+    right: 0;
+    height: 40px;
+    align-items: center;
+    display: inline-flex;
+}
+
 /* ---------- DIV AND TEXT ---------- */
 
 .black{
