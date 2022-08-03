@@ -43,12 +43,14 @@ body {
     z-index: 10;
     position: fixed;
     right: 0;
-    width: 60vw;
-    padding: 2vh;
+    width: 35vw;
+    padding: 2vw;
     margin: 3vh;
     font-size: 12px;
+    line-height: 1.7;
     display: flex;
-    background-color: #00000050;
+    background-color: #000000cb;
+    border-radius: 20px;
     bottom: -100%;
     transition: all .3s ease-in-out;
     justify-content: space-evenly;
@@ -59,8 +61,26 @@ body {
 }
 
 .cookies-new p{
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding-top: 50px;
+    padding-bottom: 35px;
+}
+
+.cookies-new h3{
+    font-size: 1.9em;
+    position: absolute;
+    top: 2vw;
+    left: 2vw;
+    margin-top: 15px;
+}
+
+.quit-cookies img{
+    cursor: pointer;
+    width: 12px;
+    opacity: 0.6;
+}
+
+.quit-cookies img:hover{
+    opacity: 1;
 }
 
 .cookies-new.cookie-active{ bottom:0; }
@@ -113,7 +133,7 @@ body {
 
 .logo{
     position: absolute;
-    left: 2vw;
+    left: 5vw;
     height: 10vh;
     align-items: center;
     display: inline-flex;
@@ -126,7 +146,7 @@ body {
     align-items: center;
     display: inline-flex;
     width: 375px;
-    right: 2vw;
+    right: 5vw;
 }
 
 ul{
@@ -144,10 +164,11 @@ li{
 a{
     color: #fff;
     text-decoration: none;
+    border-bottom: 1.2px solid #ffffff00;
 }
 a:hover {
-    transition: all .3s ease-in-out;
-    color: #000;
+    transition: all .15s ease-in;
+    border-bottom: 1.35px solid #fff;
 }
 
 /* ---------- BUTTON ---------- */
