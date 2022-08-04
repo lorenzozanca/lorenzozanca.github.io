@@ -1,3 +1,5 @@
+<div id="scrolltri" style="position: absolute; width: 100vw; height: 520vh;"></div>
+
 <div id="background-container" class="background-container">
     <div id="video-container" class="video-container">
         <video src="../media/video/output.mp4" type="video/mp4" id="bgVideo" autoplay muted="muted" playsinline="" controlslist="nodownload"></video>
@@ -20,6 +22,22 @@
 </div>
 
 <script>
+
+const container = document.getElementById("background-container");
+
+function scrollContainer() {
+    var containerEdge = document.getElementById("scrolltri").getBoundingClientRect();
+    console.log(containerEdge.top);
+
+    if (0 >= containerEdge.top && 0 <= (containerEdge.bottom + window.innerHeight) ){
+        container.classList.add("background-fixed");
+    } else {
+        container.classList.remove("background-fixed");
+    }
+}
+window.addEventListener("scroll", scrollContainer);
+
+//GSAP
 gsap.registerPlugin(ScrollTrigger);
 
 const bgVvideo = document.querySelector("#bgVideo");

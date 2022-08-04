@@ -40,7 +40,6 @@ $(function () {
     </div>
 
     <video style="z-index: 1;" src="../media/video/Header.mp4" id="intro" type="video/mp4" autoplay muted="muted" playsinline="" controlslist="nodownload"></video>
-
     <!-- <div style="position: absolute; bottom: 5vh; right: 2vw; z-index: 10; display: flex;">
         <input class="normal-btn btn" readonly="readonly" type="submit" value="Watch Video" onClick="playAudio();">
     </div> -->
@@ -52,14 +51,7 @@ $(function () {
 
 <div data-include="scrolling" style="width: 100vw;"></div>
 
-<section id="comparison" class="comparisonSection">
-    <div class="comparisonImage beforeImage">
-        <img src="../media/img/d1.webp" alt="before">
-    </div>
-    <div class="comparisonImage afterImage">
-        <img src="../media/img/d2.webp" alt="after">
-    </div>
-</section>
+<div data-include="comparison"></div>
 
 <section class="imagine">
     <p>Imagine, if we could used it proactively for <span style="color: #ED1E40;">preventive healthcare</span></p>
@@ -80,9 +72,7 @@ $(function () {
     <p>Imagine if we could provide you <span style="color: #ED1E40;">preventive healthcare</span> analyzing the entire <span style="color: #ED1E40;">body</span></p>
 </section>
 
-<div style=" scroll-snap-align: start; scroll-snap-stop: normal;" data-include="scanning"></div>
-
-<!-- <div style="z-index: 10;" data-include="scan"></div> -->
+<div style="scroll-snap-align: start; scroll-snap-stop: normal;" data-include="scanning"></div>
 
 <div data-include="every"></div>
 
@@ -95,8 +85,6 @@ $(function () {
 <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ScrollTrigger.min.js"></script>
 
 <script src="../script/video.js"></script>
-<!-- <script src="../script/scrolling.js"></script> -->
-<script src="../script/comparison.js"></script>
 
 </body>
 

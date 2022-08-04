@@ -238,7 +238,7 @@ a:hover {
 }
 .imagine{
     z-index: 1;
-    height: 100vh;
+    /* height: 100vh; */
     position: relative;
     width: 100vw;
     background-color: #000000;
@@ -269,7 +269,7 @@ a:hover {
 /* ---------- VIDEO BACKGROUND ---------- */
 
 .background-container {
-    position: fixed;
+    position: relative;
     display: flex;
     z-index: -1;
     bottom: 0px;
@@ -280,6 +280,11 @@ a:hover {
     flex-direction: row;
     align-items: center;
 }
+
+.background-fixed{
+    position: fixed;
+}
+
 .video-container {
     flex: 1;
     display: flex;

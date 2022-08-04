@@ -1,3 +1,14 @@
+<section id="comparison" class="comparisonSection">
+    <div class="comparisonImage beforeImage">
+        <img src="../media/img/d1.webp" alt="before">
+    </div>
+    <div class="comparisonImage afterImage">
+        <img src="../media/img/d2.webp" alt="after">
+    </div>
+</section>
+
+<script>
+
 gsap.utils.toArray(".comparisonSection").forEach(section => {
 	let tl = gsap.timeline({
 			scrollTrigger: {
@@ -16,3 +27,5 @@ gsap.utils.toArray(".comparisonSection").forEach(section => {
 	  // ...and the image the opposite way (at the same time)
 	  .fromTo(section.querySelector(".afterImage img"), {xPercent: -100, x: 0}, {xPercent: 0}, 0);
 });
+
+</script>
