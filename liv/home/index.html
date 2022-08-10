@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+<script src="../script/jquery.min.js"></script>
 <title>Liv | Discover Liv Patch</title>
 
 <meta charset="utf-8">
@@ -14,7 +15,6 @@
 <link rel="stylesheet" href="../script/style.css">
 <link rel="stylesheet" href="../script/style-mobile.css">
 
-<script src="../script/jquery.min.js"></script>
 <script>
 $(function () {
   var includes = $('[data-include]')
@@ -32,59 +32,89 @@ $(function () {
 <div data-include="cookies"></div>
 <div data-include="header"></div>
 
-<div class="video-container">
-    <div style="position: absolute; z-index: 5;">
-        <div class="videotext">
-            <h1 id="textVid"></h1>
-        </div>
+<div class="container">
+
+    <div id="fase0" class="fase">
+        <div><h3>SECTION 1 TEXT</h3></div>
     </div>
+    
+    <section class="video-container">
+        <div style="position: absolute; z-index: 5;"><div class="videotext"><h1 id="textVid"></h1></div></div>
+        <video style="z-index: 1;" src="../media/video/Header.mp4" id="intro" type="video/mp4" autoplay muted="muted" playsinline="" controlslist="nodownload"></video>
+        <!-- <div style="position: absolute; bottom: 5vh; right: 2vw; z-index: 10; display: flex;"><input class="normal-btn btn" readonly="readonly" type="submit" value="Watch Video" onClick="playAudio();"></div> -->
+    </section>
+    
 
-    <video style="z-index: 1;" src="../media/video/Header.mp4" id="intro" type="video/mp4" autoplay muted="muted" playsinline="" controlslist="nodownload"></video>
-    <!-- <div style="position: absolute; bottom: 5vh; right: 2vw; z-index: 10; display: flex;">
-        <input class="normal-btn btn" readonly="readonly" type="submit" value="Watch Video" onClick="playAudio();">
-    </div> -->
+
+    <!-- <section class="imagine">
+        <p>Imagine a future where your <span style="color: #ED1E40;">digital footprint</span> wherever you are is turned into health data</p>
+    </section> -->
+    
+    <section data-include="scrolling" style="width: 100vw;"></section>
+    
+    <section id="fase1" class="fase">
+        <div><h3>SECTION 2 TEXT</h3></div>
+    </section>
+
+    <section data-include="comparison"></section>
+    
+    <section id="fase2" class="fase">
+        <div><h3>SECTION 3 TEXT</h3></div>
+    </section>
+
+    <!-- <section class="imagine">
+        <p>Imagine, if we could used it proactively for <span style="color: #ED1E40;">preventive healthcare</span></p>
+    </section> -->
+    
+    <section data-include="lines"></section>
+    
+    <section class="secure">
+        <!-- <div class="video-container">
+            <video src="../media/video/secure.mp4" type="video/mp4" preload="auto" autoplay="" loop="" muted="muted" playsinline="" controlslist="nodownload"></video>
+        </div> -->
+    
+        <!-- <p>In an ultra <span style="color: #ED1E40;">secure</span> <br>
+            and <span style="color: #ED1E40;">untraceable</span> manner</p> -->
+    </section>
+    
+    <!-- <section class="imagine" style="padding-top: 30vh;">
+        <p>Imagine if we could provide you <span style="color: #ED1E40;">preventive healthcare</span> analyzing the entire <span style="color: #ED1E40;">body</span></p>
+    </section> -->
+    
+    <section data-include="scanning"></section>
+    
+    <section data-include="every"></section>
+    
+    <section id="white"></section>
+    
+    <section data-include="form"></section>
+    <section data-include="footer"></section>
+
 </div>
-
-<section class="imagine">
-    <p>Imagine a future where your <span style="color: #ED1E40;">digital footprint</span> wherever you are is turned into health data</p>
-</section>
-
-<div data-include="scrolling" style="width: 100vw;"></div>
-
-<div data-include="comparison"></div>
-
-<section class="imagine">
-    <p>Imagine, if we could used it proactively for <span style="color: #ED1E40;">preventive healthcare</span></p>
-</section>
-
-<div data-include="lines"></div>
-
-<section class="secure">
-    <!-- <div class="video-container">
-        <video src="../media/video/secure.mp4" type="video/mp4" preload="auto" autoplay="" loop="" muted="muted" playsinline="" controlslist="nodownload"></video>
-    </div> -->
-
-    <p>In an ultra <span style="color: #ED1E40;">secure</span> <br>
-        and <span style="color: #ED1E40;">untraceable</span> manner</p>
-</section>
-
-<section class="imagine" style="padding-top: 30vh;">
-    <p>Imagine if we could provide you <span style="color: #ED1E40;">preventive healthcare</span> analyzing the entire <span style="color: #ED1E40;">body</span></p>
-</section>
-
-<div style="scroll-snap-align: start; scroll-snap-stop: normal;" data-include="scanning"></div>
-
-<div data-include="every"></div>
-
-<section id="white"></section>
-
-<div data-include="form"></div>
-<div data-include="footer"></div>
 
 <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
 <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ScrollTrigger.min.js"></script>
 
 <script src="../script/video.js"></script>
+
+<script>
+
+    gsap.registerPlugin(ScrollTrigger);
+    
+    let fasi = gsap.utils.toArray(".fase");
+    fasi.forEach((fase, i) => {
+    
+        ScrollTrigger.create({
+            trigger:fase,
+            start: "bottom bottom",
+            end: "+=1000",
+            pin: true,
+            anticipatePin: 1,
+        });
+    
+    });
+        
+    </script>
 
 </body>
 

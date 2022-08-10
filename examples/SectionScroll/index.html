@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mandatory Scroll</title>
+<style>
+html, body{
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color: #d7d7d7;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height:10px;
+}
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px black;
+    background-color: #000;
+}
+::-webkit-scrollbar-thumb {
+    background: #d7d7d7;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #d7d7d7;
+}
+
+.container {
+  scroll-snap-type: y mandatory;
+  overflow: auto;
+
+  width: 100vw;
+  height: 100vh;
+}
+.container > div {
+  scroll-snap-align: center;
+
+  text-align: right;
+  line-height: 1.5;
+  font-size: 15vw;
+  width: 100%;
+  height: 100%;
+}
+
+/* appearance fixes */
+.container > div:first-child {
+  line-height: 1;
+}
+/* coloration */
+.container > div:nth-child(even) {
+  background-color: #000000;
+}
+.container > div:nth-child(odd) {
+  background-color: #ED1E40;
+}
+
+</style>
+</head>
+<body>
+  <div class="container">
+    <div>Scroll Mandatory</div>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+  </div>
+</body>
+</html>

@@ -1,74 +1,18 @@
-<div id="scrolltri" style="position: absolute; width: 100vw; height: 520vh;"></div>
-
-<div id="background-container" class="background-container">
-    <div id="video-container" class="video-container">
-        <video src="../media/video/output.mp4" type="video/mp4" id="bgVideo" autoplay muted="muted" playsinline="" controlslist="nodownload"></video>
-    </div>
-</div>
-
-<div id="scroll-container" class="scroll-container">
-    <section id="step0" class="step">
-        <!-- <div><h3>A</h3></div> -->
-    </section>
-    <section id="step1" class="step">
-        <div><h3>Where every <span style="color: #ED1E40;">data source</span> around you</h3></div>
-    </section>
-    <section id="step2" class="step">
-        <div><h3>could be <span style="color: #ED1E40;">tracked</span></h3></div>
-    </section>
-    <section id="step3" class="step">
-        <div><h3>to be analyzed, <span style="color: #ED1E40;">for you</span></h3></div>
-    </section>
-</div>
+<iframe id="cool" src="../components/frame.html" style="width: 100vw; height: 100vh; border: 0" ></iframe>
 
 <script>
 
-const container = document.getElementById("background-container");
+// function fixit() {
 
-function scrollContainer() {
-    var containerEdge = document.getElementById("scrolltri").getBoundingClientRect();
-    console.log(containerEdge.top);
+//     //entra nella sezione
+//     var cool = document.getElementById("cool").getBoundingClientRect();
 
-    if (0 >= containerEdge.top && 0 <= (containerEdge.bottom + window.innerHeight) ){
-        container.classList.add("background-fixed");
-    } else {
-        container.classList.remove("background-fixed");
-    }
-}
-window.addEventListener("scroll", scrollContainer);
+//     if (window.innerHeight >= cool.top && 0 <= cool.bottom){
+//         console.log("ciao");
+//     }
 
-//GSAP
-gsap.registerPlugin(ScrollTrigger);
+// }
 
-const bgVvideo = document.querySelector("#bgVideo");
+// window.addEventListener("scroll", fixit);
 
-bgVideo.pause();
-bgVideo.currentTime = 0;
-
-let sections = gsap.utils.toArray(".step");
-sections.forEach((step, i) => {
-
-    ScrollTrigger.create({
-        trigger: step,
-        start: "bottom bottom",
-        end: "+=1000",
-        pin: true,
-        anticipatePin: 1,
-    });
-
-    gsap.fromTo(bgVideo, { currentTime: 3 * i }, {
-        scrollTrigger: {
-            trigger: step,
-            scrub: 2,
-            start: "top bottom",
-            end: "bottom bottom",
-        },
-        currentTime: 3 * (i + 1),
-        duration: 3,
-        ease: "none",
-
-    });
-
-});
-
-</script>
+// </script>
