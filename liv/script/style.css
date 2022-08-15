@@ -110,15 +110,19 @@ body {
     overflow: hidden;
 }
 
-/* .container{
+/* .container {
+    scroll-snap-type: y mandatory;
     overflow-y: scroll;
     overflow-x: hidden;
-    scroll-snap-points-y: repeat(100vh);
-    scroll-snap-type: y mandatory;
+  
+    width: 100vw;
+    height: 100vh;
 }
 
-section{
+.container > section {
     scroll-snap-align: center;
+    width: 100%;
+    height: 100%;
 } */
 
 /* ---------- MENU ---------- */
@@ -343,6 +347,21 @@ a:hover {
     width: 100%;
     color: #ffffff;
     opacity: 1;
+}
+
+#description{
+    position: fixed;
+    text-align: center;
+    width: 100vw;
+    display: flex;
+    z-index: 2;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    opacity: 0;
+    pointer-events:none;
+    transition: all .3s ease-in-out;
 }
 
 .fase {

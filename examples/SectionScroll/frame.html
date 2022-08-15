@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../liv/script/styleframe.css">
+</head>
+
+<body>
+    
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ScrollTrigger.min.js"></script>
+        
+    <div id="background-container" class="background-container" style="position: fixed;">
+        <div id="video-container" class="video-container">
+            <video src="../../liv/media/video/output.mp4" type="video/mp4" id="bgVideo" autoplay muted="muted" playsinline="" controlslist="nodownload"></video>
+        </div>
+    </div>
+    
+    <div id="scroll-container" class="scroll-container">
+        <section id="step0" class="step">
+            <!-- <div><h3>A</h3></div> -->
+        </section>
+        <section id="step1" class="step">
+            <div><h3>Where every <span style="color: #ED1E40;">data source</span> around you</h3></div>
+        </section>
+        <section id="step2" class="step">
+            <div><h3>could be <span style="color: #ED1E40;">tracked</span></h3></div>
+        </section>
+        <section id="step3" class="step">
+            <div><h3>to be analyzed, <span style="color: #ED1E40;">for you</span></h3></div>
+        </section>
+    </div>
+    
+<script>
+    
+//GSAP
+gsap.registerPlugin(ScrollTrigger);
+
+const bgVvideo = document.querySelector("#bgVideo");
+
+bgVideo.pause();
+bgVideo.currentTime = 0;
+
+let sections = gsap.utils.toArray(".step");
+sections.forEach((step, i) => {
+
+    ScrollTrigger.create({
+        trigger: step,
+        start: "bottom bottom",
+        end: "+=1000",
+        pin: true,
+        anticipatePin: 1,
+    });
+
+    gsap.fromTo(bgVideo, { currentTime: 3 * i }, {
+        scrollTrigger: {
+            trigger: step,
+            scrub: 2,
+            start: "top bottom",
+            end: "bottom bottom",
+        },
+        currentTime: 3 * (i + 1),
+        duration: 3,
+        ease: "none",
+
+    });
+
+});
+    
+</script>
+
+</body>
+    
+</html>

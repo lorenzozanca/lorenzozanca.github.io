@@ -34,56 +34,35 @@ $(function () {
 
 <div class="container">
 
-    <div id="fase0" class="fase">
-        <div><h3>SECTION 1 TEXT</h3></div>
-    </div>
+    <div id="description"></div>
     
-    <section class="video-container">
+    <section id="section1" class="video-container">
         <div style="position: absolute; z-index: 5;"><div class="videotext"><h1 id="textVid"></h1></div></div>
         <video style="z-index: 1;" src="../media/video/Header.mp4" id="intro" type="video/mp4" autoplay muted="muted" playsinline="" controlslist="nodownload"></video>
         <!-- <div style="position: absolute; bottom: 5vh; right: 2vw; z-index: 10; display: flex;"><input class="normal-btn btn" readonly="readonly" type="submit" value="Watch Video" onClick="playAudio();"></div> -->
     </section>
     
-
-
     <!-- <section class="imagine">
         <p>Imagine a future where your <span style="color: #ED1E40;">digital footprint</span> wherever you are is turned into health data</p>
     </section> -->
     
-    <section data-include="scrolling" style="width: 100vw;"></section>
-    
-    <section id="fase1" class="fase">
-        <div><h3>SECTION 2 TEXT</h3></div>
-    </section>
+    <section id="section2" data-include="scrolling" style="width: 100vw;"></section>
 
-    <section data-include="comparison"></section>
+    <section id="section3" data-include="comparison"></section>
     
-    <section id="fase2" class="fase">
-        <div><h3>SECTION 3 TEXT</h3></div>
-    </section>
-
     <!-- <section class="imagine">
         <p>Imagine, if we could used it proactively for <span style="color: #ED1E40;">preventive healthcare</span></p>
     </section> -->
     
-    <section data-include="lines"></section>
-    
-    <section class="secure">
-        <!-- <div class="video-container">
-            <video src="../media/video/secure.mp4" type="video/mp4" preload="auto" autoplay="" loop="" muted="muted" playsinline="" controlslist="nodownload"></video>
-        </div> -->
-    
-        <!-- <p>In an ultra <span style="color: #ED1E40;">secure</span> <br>
-            and <span style="color: #ED1E40;">untraceable</span> manner</p> -->
-    </section>
+    <section id="section4" data-include="lines"></section>
     
     <!-- <section class="imagine" style="padding-top: 30vh;">
         <p>Imagine if we could provide you <span style="color: #ED1E40;">preventive healthcare</span> analyzing the entire <span style="color: #ED1E40;">body</span></p>
     </section> -->
     
-    <section data-include="scanning"></section>
+    <section id="section5" data-include="scanning" style="padding-top: 20vh;"></section>
     
-    <section data-include="every"></section>
+    <section id="section6" data-include="every"></section>
     
     <section id="white"></section>
     
@@ -99,22 +78,54 @@ $(function () {
 
 <script>
 
-    gsap.registerPlugin(ScrollTrigger);
-    
-    let fasi = gsap.utils.toArray(".fase");
-    fasi.forEach((fase, i) => {
-    
-        ScrollTrigger.create({
-            trigger:fase,
-            start: "bottom bottom",
-            end: "+=1000",
-            pin: true,
-            anticipatePin: 1,
-        });
-    
-    });
-        
-    </script>
+    var description = document.getElementById("description");
+
+    function narration() {
+
+    var section1 = document.getElementById("section1").getBoundingClientRect();
+
+        if (0 > section1.top) {
+            description.innerHTML = "Imagine a future where your digital footprint wherever you are is turned into health data";
+            description.style.opacity = "1";
+
+            var section2 = document.getElementById("section2").getBoundingClientRect();
+            if (0 > section2.top) {
+                description.innerHTML = "";
+                description.style.opacity = "1";
+
+                var section3 = document.getElementById("section3").getBoundingClientRect();
+                if (0 > section3.top) {
+                    description.innerHTML = "Imagine, if we could used it proactively for preventive healthcare";
+                    description.style.opacity = "1";
+
+                    var section4 = document.getElementById("section4").getBoundingClientRect();
+                    if (0 > section4.top) {
+                        description.innerHTML = "";
+                        description.style.opacity = "1";
+
+                        var section5 = document.getElementById("section5").getBoundingClientRect();
+                        if (0 > section5.top) {
+                            description.innerHTML = "Imagine if we could analyze the entire body";
+                            description.style.opacity = "1";
+
+                            var section6 = document.getElementById("section6").getBoundingClientRect();
+                            if (0 > section6.top) {
+                                description.innerHTML = "";
+                                description.style.opacity = "0";
+                            }
+                        }
+                    }
+                }
+            }
+
+        } else {
+            description.style.opacity = "0";
+        }
+    }
+
+    window.addEventListener("scroll", narration);
+
+</script>
 
 </body>
 
