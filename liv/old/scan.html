@@ -1,0 +1,47 @@
+<div style="height:225vh">
+    <div id="sotto">
+      <div id="scanner"></div>
+      <p id="scanDescription"></p>
+    </div>
+</div>
+
+<script>
+
+  function fermati(){
+    document.body.classList.add("stop-scrolling");
+    setTimeout(() => {document.body.classList.remove("stop-scrolling")}, 100);
+  }
+
+  var Desc = document.getElementById("scanDescription");
+
+  function analisi(){
+
+    var guide = document.getElementById("sotto").getBoundingClientRect();
+    var scanner = document.getElementById("scanner").getBoundingClientRect();
+
+    if (0 > guide.top && (-0.32 * window.innerHeight) < guide.top){
+      document.documentElement.scrollTop = document.documentElement.scrollTop + (0.35 * window.innerHeight);
+    }
+
+    if((0.35 * window.innerHeight) >= scanner.top){
+      Desc.innerHTML = "We analize the arms";
+
+      if((0.2 * window.innerHeight) >= scanner.top){
+        Desc.innerHTML = "We analize the chest";
+
+        if((0.05 * window.innerHeight) >= scanner.top){
+          Desc.innerHTML = "We analize the head";
+
+          if(0 >= scanner.top){
+            Desc.innerHTML = "";
+          }
+        }
+      }
+    } else {
+      Desc.innerHTML = "";
+    }
+
+  }
+
+  window.addEventListener("scroll", analisi);
+</script>

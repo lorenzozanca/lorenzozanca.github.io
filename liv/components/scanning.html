@@ -1,25 +1,29 @@
-<div class="scrolling-video-container">
+<div style="background-color: black; width: 100vw; height: 100vh; position: absolute; display: block; z-index: 1;">
 
-    <div style="position: absolute; z-index: 5;">
-        <div class="videotext" style="height: 56.25vw;">
-            <h1 id="scrolltext"></h1>
-        </div>
+    <div class="scrolling-video-container">
 
-        <div class="scrollVideoText scrollHead">
-            <h1 id="scrollHead">Analyzing the <span style="color: #ED1E40; font-size: 60px;">head</span></h1>
+        <div style="position: absolute; z-index: 5;">
+            <div class="videotext" style="height: 56.25vw;">
+                <h1 id="scrolltext"></h1>
+            </div>
+    
+            <div class="scrollVideoText scrollHead">
+                <h1 id="scrollHead">Analyzing the <span style="color: #ED1E40; font-size: 60px;">head</span></h1>
+            </div>
+            <div class="scrollVideoText scrollChest">
+                <h1 id="scrollChest">Analyzing the <span style="color: #ED1E40; font-size: 60px;">chest</span></h1>
+            </div>
+            <div class="scrollVideoText scrollArms">
+                <h1 id="scrollArms">Analyzing the <span style="color: #ED1E40; font-size: 60px;">arms</span></h1>
+            </div>
+            <div class="scrollVideoText scrollBust">
+                <h1 id="scrollBust">Analyzing the <span style="color: #ED1E40; font-size: 60px;">stomach</span></h1>
+            </div>
         </div>
-        <div class="scrollVideoText scrollChest">
-            <h1 id="scrollChest">Analyzing the <span style="color: #ED1E40; font-size: 60px;">chest</span></h1>
-        </div>
-        <div class="scrollVideoText scrollArms">
-            <h1 id="scrollArms">Analyzing the <span style="color: #ED1E40; font-size: 60px;">arms</span></h1>
-        </div>
-        <div class="scrollVideoText scrollBust">
-            <h1 id="scrollBust">Analyzing the <span style="color: #ED1E40; font-size: 60px;">stomach</span></h1>
-        </div>
+    
+        <video style="z-index: 1;" src="../media/video/scan.mp4" id="videoScan" type="video/mp4" autoplay muted="muted" playsinline="" controlslist="nodownload"></video>
+    
     </div>
-
-    <video style="z-index: 1;" src="../media/video/scan.mp4" id="videoScan" type="video/mp4" autoplay muted="muted" playsinline="" controlslist="nodownload"></video>
 
 </div>
 

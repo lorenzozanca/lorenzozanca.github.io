@@ -22,23 +22,6 @@ body {
     background-color: #000000;
 }
 
-/* ::-webkit-scrollbar {
-    width: 10px;
-    height:10px;
-}
-::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 5px black;
-    background-color: #000;
-}
-::-webkit-scrollbar-thumb {
-    background: #d7d7d7;
-    border-radius: 5px;
-    -webkit-border-radius: 5px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #fff;
-} */
-
 .cookies-new{
     z-index: 10;
     position: fixed;
@@ -192,7 +175,7 @@ a:hover {
     border: none;
 }
 
-.exception-btn{
+.exception-btn {
     color: #000;
     background: #fff;
     border: 1px solid #000;
@@ -269,9 +252,8 @@ a:hover {
 /* ---------- VIDEO BACKGROUND ---------- */
 
 .background-container {
-    position: relative;
+    position: fixed;
     display: flex;
-    z-index: -1;
     bottom: 0px;
     left: 0px;
     width: 100%;
@@ -280,11 +262,6 @@ a:hover {
     flex-direction: row;
     align-items: center;
 }
-
-.background-fixed{
-    position: fixed;
-}
-
 .video-container {
     flex: 1;
     display: flex;
@@ -632,13 +609,14 @@ a:hover {
 /* ---------- SCANNER NEW ---------- */
 
 .scrolling-video-container {
+    padding-top: 20vh;
     flex: 1;
     display: flex;
     justify-content: center;
 
     overflow: hidden;
 
-    /* height: 100%; */
+    height: 100%;
     width: 177.77777778vh; /* 100 * 16 / 9 */
     min-width: 100%;
     max-width: 100vw;
@@ -661,20 +639,20 @@ a:hover {
 .scrollHead{
     text-align: right;
     right: 5vh;
-    bottom: 20vw;
+    bottom: 30vw;
 }
 .scrollChest{
     left: 5vh;
-    bottom: 20vw;
+    bottom: 30vw;
 }
 .scrollArms{
     text-align: right;
     right: 5vh;
-    bottom: 20vw;
+    bottom: 30vw;
 }
 .scrollBust{
     left: 5vh;
-    bottom: 10vw;
+    bottom:20vw;
 }
 
 /* ---------- EVERYTHING ---------- */

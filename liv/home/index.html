@@ -1,83 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<script src="../script/jquery.min.js"></script>
-<title>Liv | Discover Liv Patch</title>
 
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1" name="viewport">
-<link href="../media/favicon.png" rel="shortcut icon" type="image/x-icon">
-<link href="../media/app.png" rel="apple-touch-icon">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../script/style.css">
-<link rel="stylesheet" href="../script/style-mobile.css">
+    <title>Liv | Discover Liv Patch</title>
+    <script src="../script/jquery.min.js"></script>
 
-<script>
-$(function () {
-  var includes = $('[data-include]')
-  $.each(includes, function () {
-    var file = '../components/' + $(this).data('include') + '.html'
-    $(this).load(file)
-  })
-})
-</script>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="../media/favicon.png" rel="shortcut icon" type="image/x-icon">
+    <link href="../media/app.png" rel="apple-touch-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../script/style.css">
+    <link rel="stylesheet" href="../script/style-mobile.css">
+
+    <script>
+        $(function () {
+            var includes = $('[data-include]')
+            $.each(includes, function () {
+                var file = '../components/' + $(this).data('include') + '.html'
+                $(this).load(file)
+            })
+        })
+    </script>
 
 </head>
 
-<body onload="start();">
+<body>
+    <!-- onload="start();" -->
  
-<div data-include="cookies"></div>
-<div data-include="header"></div>
-
-<div class="container">
+    <div data-include="cookies"></div>
+    <div data-include="header"></div>
 
     <div id="description"></div>
-    
-    <section id="section1" class="video-container">
-        <div style="position: absolute; z-index: 5;"><div class="videotext"><h1 id="textVid"></h1></div></div>
-        <video style="z-index: 1;" src="../media/video/Header.mp4" id="intro" type="video/mp4" autoplay muted="muted" playsinline="" controlslist="nodownload"></video>
-        <!-- <div style="position: absolute; bottom: 5vh; right: 2vw; z-index: 10; display: flex;"><input class="normal-btn btn" readonly="readonly" type="submit" value="Watch Video" onClick="playAudio();"></div> -->
-    </section>
-    
-    <!-- <section class="imagine">
-        <p>Imagine a future where your <span style="color: #ED1E40;">digital footprint</span> wherever you are is turned into health data</p>
-    </section> -->
-    
-    <!-- <section id="section2" data-include="scrolling" style="width: 100vw;"></section> -->
-    
-    <section id="section2" data-include="OLDscrolling" style="width: 100vw;"></section>
+
+    <!-- <section id="section1" data-include="landing"></section> -->
+
+    <section id="section1" data-include="scanning"></section>
+
+    <section id="section2" data-include="scrolling"></section>
 
     <section id="section3" data-include="comparison"></section>
-    
-    <!-- <section class="imagine">
-        <p>Imagine, if we could used it proactively for <span style="color: #ED1E40;">preventive healthcare</span></p>
-    </section> -->
-    
+
     <section id="section4" data-include="lines"></section>
-    
-    <!-- <section class="imagine" style="padding-top: 30vh;">
-        <p>Imagine if we could provide you <span style="color: #ED1E40;">preventive healthcare</span> analyzing the entire <span style="color: #ED1E40;">body</span></p>
-    </section> -->
-    
-    <section id="section5" data-include="scanning" style="padding-top: 20vh;"></section>
-    
-    <section id="section6" data-include="every"></section>
-    
+
+    <section id="section5" data-include="every"></section>
+
     <section id="white"></section>
-    
+
     <section data-include="form"></section>
     <section data-include="footer"></section>
 
-</div>
 
-<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
-<script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ScrollTrigger.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ScrollTrigger.min.js"></script>
 
-<script src="../script/video.js"></script>
-<script src="../script/narration.js"></script>
+    <script src="../script/narration.js"></script>
 
 </body>
 
