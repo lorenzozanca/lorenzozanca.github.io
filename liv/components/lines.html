@@ -103,7 +103,7 @@ function line() {
             var crypto = document.getElementById("crypto").getBoundingClientRect();
             var pad = 0.06 * window.innerHeight;
 
-            if((0.2 * (window.innerHeight + pad)) > crypto.top && converge1.top < 0){
+            if((0.3 * (window.innerHeight + pad)) > crypto.top && converge1.top < 0){
                 //console.log("muro = " + crypto.top);
                 //sostituisci device
 
@@ -163,6 +163,8 @@ function line() {
             basedevice.classList.remove("piccolo");
             devices.classList.remove("piccolo");
 
+            glitched.style.display = "none";
+
             hider.classList.remove("hider2");
         }
 
@@ -172,6 +174,9 @@ function line() {
         basedevice.style.position = "absolute";
         devices.style.display = "none";
         devices.style.position = "absolute";
+
+        glitched.style.display = "none";
+
         lines.style.display = "none";
         brain.style.display = "none";
         hider.style.display = "none";
