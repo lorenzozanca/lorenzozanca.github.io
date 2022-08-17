@@ -122,6 +122,13 @@ body {
     display: inline-flex;
 }
 
+.logo a{
+    border: none;   
+}
+.logo a:hover{
+    border: none;
+}
+
 .menu{
     z-index: 2;
     position: absolute;
@@ -132,28 +139,36 @@ body {
     right: 5vw;
 }
 
-ul{
-    display: flex;
+ul {
     list-style-type: none;
+}
+
+.menu ul{
+    display: flex;
     padding-left: 30px;
 }
 
-li{
+.menu li{
     padding-left:15px;
     padding-right: 15px;
     font-weight: bold;
     font-size: 15px;
 }
-a{
+.menu a{
     color: #fff;
     text-decoration: none;
     border-bottom: 1.2px solid #ffffff00;
 }
-a:hover {
+.menu a:hover {
     transition: all .15s ease-in;
     border-bottom: 1.35px solid #fff;
 }
 
+a{
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1.35px solid #fff;
+}
 /* ---------- BUTTON ---------- */
 
 .btn{
@@ -834,11 +849,22 @@ a:hover {
     background-color: #ffffff;
     padding-bottom: 4vh;
     padding-top: 4vh;
+    padding-right: 5vw;
+    padding-left: 5vw;
 }
-.footer a{ color: #000000; }
-.footer a:hover { color: #ED1E40; }
+.footer a{ 
+    color: #000000; 
+    border-bottom: 1.35px solid #000;
+}
+
+.footNo a{
+    border: none;
+}
+
 .foot { display: table-cell; }
+
 .on { width: 20vw; }
+.on a{ border: none; }
 .to { width: 30vw; }
 .foot ul{ display: inline; }
 .foot ul li{
