@@ -9,22 +9,29 @@
     <section id="step0" class="step"></section>
     
     <section id="step1" class="step">
-        <div><h3>Where all your devices are connected to one centralized system / AI brain / neural network</h3></div>
+        <div><h3>Where all your devices are connected <br> to one centralized system</h3></div>
     </section>
+
     <section id="step2" class="step">
-        <div><h3>Where your “smart home” intelligently monitors your health condition</h3></div>
+        <div><h3>Where your “smart home” <br> monitors your health condition</h3></div>
     </section>
+
     <section id="step3" class="step">
-        <div><h3>Where every time you pick up your phone, drive your car, sit in front of your computer or watch TV</h3></div>
+        <div><h3>Where every time you pick up your phone, <br> drive your car, sit in front of <br> your computer or watch TV</h3></div>
     </section>
+
     <section id="step4" class="step">
-        <div><h3>the built-in camera monitors/tracks your health condition</h3></div>
+        <div><h3>the built-in camera monitor your health condition</h3></div>
     </section>
+
     <section id="step5" class="step">
-        <div><h3>Where the wireless signals around you tracks your health in an unobtrusive manner</h3></div>
+        <div><h3>Where the wireless signals around you<br>tracks your health in an unobtrusive manner</h3></div>
     </section>
-    
-    <section id="step6" class="step"></section>
+
+
+    <section id="step6" class="step">
+        <div><h3>where your digital footprint – wherever you are</h3></div>
+    </section>
 
 </div>
 
@@ -32,6 +39,19 @@
     
 //GSAP
 gsap.registerPlugin(ScrollTrigger);
+
+const containers = gsap.utils.toArray(".container");
+containers.forEach((container) => {
+  gsap.to(container, {
+    autoAlpha: 1,
+    ease: "power1.in",
+    scrollTrigger: {
+      trigger: container,
+      pin: true,
+      scrub: true
+    }
+  });
+});
 
 const bgVvideo = document.querySelector("#bgVideo");
 
@@ -41,14 +61,24 @@ bgVideo.currentTime = 0;
 let sections = gsap.utils.toArray(".step");
 sections.forEach((step, i) => {
 
-    ScrollTrigger.create({
-        trigger: step,
-        start: "bottom bottom",
-        end: "+=1000",
-        pin: true,
-        anticipatePin: 1,
-    });
+    // ScrollTrigger.create({
+    //     trigger: step,
+    //     start: "bottom bottom",
+    //     end: "+=1000",
+    //     pin: true,
+    //     anticipatePin: 1,
+    // });
 
+    gsap.to(step, {
+        autoAlpha: 1,
+        ease: "power1.in",
+        scrollTrigger: {
+            trigger: step,
+            pin: true,
+            scrub: true
+        }
+    });
+    
     gsap.fromTo(bgVideo, { currentTime: 3 * i }, {
         scrollTrigger: {
             trigger: step,

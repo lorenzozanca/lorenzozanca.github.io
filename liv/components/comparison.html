@@ -2,6 +2,11 @@
 	<img src="../media/img/d1.webp">
 </div> -->
 
+<div class="container">
+	is translated into healthcare data
+</div>
+
+
 <div id="comparison" class="comparisonSection">
     <div class="comparisonImage beforeImage">
         <img src="../media/img/d1.webp" alt="before">
@@ -30,6 +35,19 @@ gsap.utils.toArray(".comparisonSection").forEach(section => {
 	tl.fromTo(section.querySelector(".afterImage"), { xPercent: 100, x: 0}, {xPercent: 0})
 	  // ...and the image the opposite way (at the same time)
 	  .fromTo(section.querySelector(".afterImage img"), {xPercent: -100, x: 0}, {xPercent: 0}, 0);
+});
+
+const containers = gsap.utils.toArray(".container");
+containers.forEach((container) => {
+  gsap.to(container, {
+    autoAlpha: 1,
+    ease: "power1.in",
+    scrollTrigger: {
+      trigger: container,
+      pin: true,
+      scrub: true
+    }
+  });
 });
 
 </script>
