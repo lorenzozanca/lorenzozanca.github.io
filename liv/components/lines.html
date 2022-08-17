@@ -68,19 +68,6 @@
 
 <script>
 
-const containers = gsap.utils.toArray(".container");
-containers.forEach((container) => {
-  gsap.to(container, {
-    autoAlpha: 1,
-    ease: "power1.in",
-    scrollTrigger: {
-      trigger: container,
-      pin: true,
-      scrub: true
-    }
-  });
-});
-
 const basedevice = document.getElementById("basedevice");
 const devices = document.getElementById("devices");
 const glitched = document.getElementById("glitched");
@@ -212,4 +199,27 @@ function line() {
 
 window.addEventListener("scroll", line);
 
+</script>
+
+<script>
+
+    var targets = document.querySelectorAll(".container");
+    
+    targets.forEach(target => {
+    const tl = gsap.timeline({
+            defaults: {duration: 1},
+            scrollTrigger: {
+            trigger: target,
+            markers: false,
+            scrub: true,
+            start: "center 50%",
+            end: "bottom top",
+            pin: true
+        }
+    })
+    .fromTo(target, {y: 25}, {y: -25})
+    .from(target, {opacity: 0, duration: 0.2}, 0)
+    .to(target, {opacity: 0, duration: 0.2}, 0.8)
+    });
+    
 </script>

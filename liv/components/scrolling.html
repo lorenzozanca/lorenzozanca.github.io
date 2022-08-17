@@ -40,19 +40,6 @@
 //GSAP
 gsap.registerPlugin(ScrollTrigger);
 
-const containers = gsap.utils.toArray(".container");
-containers.forEach((container) => {
-  gsap.to(container, {
-    autoAlpha: 1,
-    ease: "power1.in",
-    scrollTrigger: {
-      trigger: container,
-      pin: true,
-      scrub: true
-    }
-  });
-});
-
 const bgVvideo = document.querySelector("#bgVideo");
 
 bgVideo.pause();
@@ -60,25 +47,23 @@ bgVideo.currentTime = 0;
 
 let sections = gsap.utils.toArray(".step");
 sections.forEach((step, i) => {
-
-    // ScrollTrigger.create({
-    //     trigger: step,
-    //     start: "bottom bottom",
-    //     end: "+=1000",
-    //     pin: true,
-    //     anticipatePin: 1,
-    // });
-
-    gsap.to(step, {
-        autoAlpha: 1,
-        ease: "power1.in",
-        scrollTrigger: {
-            trigger: step,
-            pin: true,
-            scrub: true
-        }
-    });
     
+    const tl = gsap.timeline({
+            defaults: {duration: 1},
+            scrollTrigger: {
+            trigger: step,
+            markers: false,
+            scrub: true,
+            start: "center 50%",
+            end: "bottom top",
+            pin: true
+        }
+
+    })
+    .fromTo(step, {y: 25}, {y: -25})
+    .from(step, {opacity: 0, duration: 0.2}, 0)
+    .to(step, {opacity: 0, duration: 0.2}, 0.8);
+
     gsap.fromTo(bgVideo, { currentTime: 3 * i }, {
         scrollTrigger: {
             trigger: step,

@@ -27,43 +27,51 @@
 
 </div>
 
+<div class="container"> Imagine the future of health </div>
+
 <script>
 var videoScan = document.getElementById('videoScan');
 const scrolltext = document.getElementById("scrolltext");
 
-function thistext(){
-    setTimeout(() => {
-    document.getElementById("scrollHead").style.opacity = "1";
-    // scrolltext.innerHTML = "We analize the head";
-    }, "700")
-    setTimeout(() => {
-    document.getElementById("scrollHead").style.opacity = "0";
-    document.getElementById("scrollChest").style.opacity = "1";
-    // scrolltext.innerHTML = "We analize the chest";
-    }, "4300")
-    setTimeout(() => {
-    document.getElementById("scrollChest").style.opacity = "0";
-    document.getElementById("scrollArms").style.opacity = "1";
-    // scrolltext.innerHTML = "We analize the arms";
-    }, "8500")
-    setTimeout(() => {
-    document.getElementById("scrollArms").style.opacity = "0";
-    document.getElementById("scrollBust").style.opacity = "1";
-    // scrolltext.innerHTML = "We analize the bust";
-    }, "13200")
-    setTimeout(() => {
-    document.getElementById("scrollBust").style.opacity = "0";
-    // scrolltext.innerHTML = "";
-    }, "16500")
-}
+$(document).ready(function(){
+  $(videoScan).on(
+    "timeupdate", 
+    function(event){
+      onTrackedVideoFrame(this.currentTime, this.duration);
 
-videoScan.addEventListener('play', (event) => {
-    thistext();
+    if(videoScan.currentTime > 0.7){
+        document.getElementById("scrollHead").style.opacity = "1";
+
+        if (videoScan.currentTime > 4.3){
+            document.getElementById("scrollHead").style.opacity = "0";
+            document.getElementById("scrollChest").style.opacity = "1";
+            
+            if (videoScan.currentTime > 8.5){
+                document.getElementById("scrollChest").style.opacity = "0";
+                document.getElementById("scrollArms").style.opacity = "1";
+
+                if (videoScan.currentTime > 13.2){
+                document.getElementById("scrollArms").style.opacity = "0";
+                document.getElementById("scrollBust").style.opacity = "1";
+
+                    if (videoScan.currentTime > 16.5){
+                    document.getElementById("scrollBust").style.opacity = "0";
+                    }
+                }
+            }
+        }
+    } 
+
+    });
 });
+
+function onTrackedVideoFrame(currentTime, duration){
+    $("#current").text(currentTime); //Change #current to currentTime
+    $("#duration").text(duration)
+}
 
 videoScan.addEventListener('ended', (event) => {
     videoScan.play();
-    thistext();
 });
 
 </script>
