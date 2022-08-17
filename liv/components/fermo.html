@@ -1,0 +1,40 @@
+<style>
+    .prova{
+        position: relative;
+        height: 200vh;
+        width: 100vw;
+        background-image: url( '../media/img/d1.webp');
+        background-attachment: fixed;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: chartreuse;
+    }
+</style>
+<div class="prova" id="prova"></div>
+
+<div id="fermo" class="comparisonImage2">
+    <img src="../media/img/d1.webp">
+</div>
+
+<script>
+
+const fermo = document.getElementById("fermo");
+
+function provafun() {
+    var prova = document.getElementById("prova").getBoundingClientRect();
+
+    if (0 >= (prova.bottom)){
+        fermo.style.display = "none";
+        //fuori
+    } else if (0 >= (prova.top)){
+        fermo.style.display = "block";
+        //dentro
+    } else {
+        fermo.style.display = "none";
+        //nulla
+    }
+}
+window.addEventListener("scroll", provafun);
+
+</script>

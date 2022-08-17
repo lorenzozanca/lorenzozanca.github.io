@@ -442,6 +442,18 @@ a:hover {
     top: 0;
 }
 
+.comparisonImage2 {
+    width: 100vw;
+    height: 100vh;
+}
+.comparisonImage2 img {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    position: fixed;
+    top: 0;
+}
+
 /* ---------- LINES ---------- */
 
 #lineSection{
@@ -455,7 +467,7 @@ a:hover {
     width: 80vw;
     /* min-height: 100vh; */
     left: 10vw;
-    top: 25vh;
+    top: 21vh;
     z-index: 2;
 
     transition: all .3s ease-in-out;
