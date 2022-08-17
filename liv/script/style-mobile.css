@@ -15,9 +15,13 @@
 
 /* ---------- MENU ---------- */
 
-.menu{ 
+.logo{
+    top:2px;
     left: 10vw;
-    top: 8px;
+}
+
+.menu{ 
+    left: 25vw;
 }
 
 .menu li{
@@ -45,6 +49,8 @@
 
 /* ---------- VIDEO BACKGROUND ---------- */
 
+.background-container { width: 100vw; }
+
 .video-container{
     height: 100vh;
     width: 100vw;
@@ -61,6 +67,11 @@
 }
 
 .step>div { font-size:6vw !important; }
+
+.container { 
+    width: 100vw;
+    font-size:6vw !important; 
+}
 
 .videotext h1{ font-size: 6vw; }
 
@@ -112,6 +123,9 @@
 
 /* ---------- SCANNER OLD ---------- */
 /* ---------- SCANNER NEW ---------- */
+
+
+.scrolling-video-container { max-height: 100vh; }
 
 .scrollVideoText{ width: 60vw; }
 
