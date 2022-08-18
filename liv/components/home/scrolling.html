@@ -9,7 +9,7 @@
     <section id="step0" class="step"></section>
     
     <section id="step1" class="step">
-        <div><h3>Where all your devices are connected <br> to one centralized system</h3></div>
+        <div><h3>Where all your devices are connected</h3></div>
     </section>
 
     <section id="step2" class="step">
@@ -60,8 +60,8 @@ sections.forEach((step, i) => {
         }
 
     })
-    .fromTo(step, {y: 25}, {y: -80})
-    .from(step, {opacity: 0, duration: 0.2}, 0)
+    .fromTo(step, {y: 60}, {y: -80})
+    .from(step, {opacity: 0, duration: 0.3}, 0)
     .to(step, {opacity: 0, duration: 0.2}, 0.8);
 
     gsap.fromTo(bgVideo, { currentTime: 3 * i }, {
