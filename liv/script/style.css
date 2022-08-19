@@ -239,8 +239,8 @@ a{
     /* height: 100vh; */
     position: relative;
     width: 100vw;
-    background-color: #000000;
-
+    background-color: #fff;
+    color: black;
     display: flex;
     align-content: center;
     align-items: center;
@@ -255,8 +255,8 @@ a{
 }
 .imagine p {
     padding: 5vh;
-    font-size:3vw;
-    font-weight: bold;
+    font-size:40px;
+    font-weight: normal;
 }
 
 .imaginehalf p {
@@ -775,6 +775,11 @@ a{
     align-content: center;
     align-items: center;
     overflow: hidden;
+
+    background-attachment: scroll;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .founder p {
@@ -805,6 +810,10 @@ a{
     text-align: center;
     padding: 5vh;
 }
+
+.daniel{background-image: url("../media/img/bg/field.webp");}
+.sachin{background-image: url("../media/img/bg/fly.webp");}
+.max{background-image: url("../media/img/bg/bike.webp");}
 
 .imgfull{
     position: absolute;
