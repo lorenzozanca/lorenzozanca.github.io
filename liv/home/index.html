@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../script/style.css">
     <link rel="stylesheet" href="../script/style-mobile.css">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
     <script>
         $(function () {
@@ -29,30 +30,57 @@
 <body>
     <!-- onload="start();" -->
  
-    <div data-include="cookies"></div>
-    <div data-include="header"></div>
+    <div id="loading">
+        <lottie-player class="loading-icon" src="https://lottie.host/fde60dcc-800b-43b2-b5be-909246ce3856/DL8SOsW1qm.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player>
+    </div>
 
-    <!-- <section id="section1" data-include="home/landing"></section> -->
+    <div class="page">
 
-    <section data-include="home/scanning"></section>
-
-    <!-- <section data-include="home/scrolling"></section>
-
-    <section data-include="home/comparison"></section> -->
+        <div data-include="cookies"></div>
+        <div data-include="header"></div>
     
-    <section data-include="home/newscroll"></section>
-
-    <section data-include="home/lines"></section>
-
-    <section id="white"></section>
-
-    <section data-include="home/every"></section>
+        <!-- <section id="section1" data-include="home/landing"></section> -->
     
-    <section data-include="home/closing"></section>
+        <section data-include="home/scanning"></section>
+    
+        <!-- <section data-include="home/scrolling"></section>
+    
+        <section data-include="home/comparison"></section> -->
+        
+        <section data-include="home/newscroll"></section>
+    
+        <section data-include="home/lines"></section>
+    
+        <section id="white"></section>
+    
+        <section data-include="home/every"></section>
+        
+        <section data-include="home/closing"></section>
+    
+        <section data-include="form"></section>
+        <section data-include="footer"></section>
 
-    <section data-include="form"></section>
-    <section data-include="footer"></section>
+    </div>
 
+    <script>
+    const wait = (delay = 0) =>
+        new Promise(resolve => setTimeout(resolve, delay));
+
+    const setVisible = (elementOrSelector, visible) => 
+        (typeof elementOrSelector === 'string'
+            ? document.querySelector(elementOrSelector)
+            : elementOrSelector
+        ).style.visibility = visible ? 'visible' : 'hidden';
+
+    setVisible('.page', false);
+    setVisible('#loading', true);
+
+    document.addEventListener('DOMContentLoaded', () =>
+        wait(1000).then(() => {
+            setVisible('.page', true);
+            setVisible('#loading', false);
+        }));
+    </script>
 
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
     <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ScrollTrigger.min.js"></script>

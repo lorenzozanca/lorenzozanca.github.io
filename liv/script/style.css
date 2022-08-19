@@ -21,6 +21,27 @@ body {
     overflow-y: auto;
     background-color: #000000;
 }
+  
+.page { visibility: hidden; }
+
+#loading {
+    display: flex;
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    background-repeat: no-repeat;
+    background-position: center;
+    /* align-items: center;
+    justify-content: center; */
+}
+
+.loading-icon{
+    position: absolute;
+    left: calc(50vw - 100px);
+    top: calc(50vh - 100px);
+}
 
 .cookies-new{
     z-index: 10;
