@@ -20,6 +20,11 @@ body {
     overflow-x: hidden;
     overflow-y: auto;
     background-color: #000000;
+    font-size: 16px;
+}
+
+h3 {
+    font-size: 40px;
 }
   
 .page { visibility: hidden; }
@@ -370,7 +375,7 @@ a{
     height: 100vh;
     justify-content: center;
     align-items: center;
-    font-size: 50px;
+    font-size: 40px;
     opacity: 0;
     pointer-events:none;
     transition: all .3s ease-in-out;
@@ -396,7 +401,7 @@ a{
 
     justify-content: flex-end;
     padding-bottom: 5vh;
-    font-size: 50px;
+    font-size: 40px;
     /* justify-content: center;
     font-size: 40px; */
     font-weight: 700;
@@ -635,7 +640,7 @@ a{
 .secure p{
     padding:5vh;
     position: absolute;
-    font-size: 60px;
+    font-size: 40px;
     font-weight: bold;
     bottom: 0;
 }
@@ -664,7 +669,7 @@ a{
     position: fixed;
     bottom: 10vh;
     left: 5vw;
-    font-size: 36px;
+    font-size: 40px;
 }
 
 /* ---------- SCANNER NEW ---------- */
@@ -686,7 +691,7 @@ a{
 
 .scrollVideoText{
     position: absolute;
-    width: 30vw;
+    width: 60vw;
     line-height: 1;
     font-weight: bold;
 }
@@ -782,6 +787,30 @@ a{
     width: 100vw;
     color: #000;
     transition: all .3s ease-in-out;
+}
+
+/* ---------- CLOSING ---------- */
+
+.closing{
+    z-index: 1;
+    /* height: 100vh; */
+    position: relative;
+    width: 100vw;
+    background-color: #fff;
+    color: black;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.closing p {
+    padding: 5vh;
+    font-size:40px;
+    font-weight: normal;
+    width: 70vw;
+}
+.closing div {
+    width: 30vw;
 }
 
 /* ---------- ABOUT ME ---------- */
