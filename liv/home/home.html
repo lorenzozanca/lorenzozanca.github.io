@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Liv | Discover Liv Patch</title>
+    <script src="../script/jquery.min.js"></script>
+
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="../media/favicon.png" rel="shortcut icon" type="image/x-icon">
+    <link href="../media/app.png" rel="apple-touch-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../script/style.css">
+    <link rel="stylesheet" href="../script/style-mobile.css">
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/ScrollTrigger.min.js"></script>
+
+    <script>
+        $(function () {
+            var includes = $('[data-include]')
+            $.each(includes, function () {
+                var file = '../components/' + $(this).data('include') + '.html'
+                $(this).load(file)
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <!-- onload="start();" -->
+ 
+    <div id="loading">
+        <lottie-player class="loading-icon" src="https://lottie.host/fde60dcc-800b-43b2-b5be-909246ce3856/DL8SOsW1qm.json" background="transparent" speed="1" style="width: 200px; height: 200px;" loop autoplay></lottie-player>
+    </div>
+
+    <div class="page">
+
+        <div data-include="cookies"></div>
+        <div data-include="header"></div>
+        
+        <section>
+            <div style="background-color: black; width: 100vw; height: 100vh; position: relative; display: block; z-index: 1;">
+
+                <div class="scrolling-video-container">
+            
+                    <div style="position: absolute; z-index: 5;">
+                        <div class="videotext" style="height: 56.25vw;">
+                            <h1 id="scrolltext"></h1>
+                        </div>
+                
+                        <div class="scrollVideoText scrollHead">
+                            <h1 id="scrollHead">Analyzing the <span style="color: #ED1E40; font-size: 40px;">Electroencephalogram, eye-tracking, saliva, skin tone</span></h1>
+                        </div>
+                        <div class="scrollVideoText scrollChest">
+                            <h1 id="scrollChest">Analyzing the <span style="color: #ED1E40; font-size: 40px;">ECG</span></h1>
+                        </div>
+                        <div class="scrollVideoText scrollArms">
+                            <h1 id="scrollArms">Analyzing the <span style="color: #ED1E40; font-size: 40px;">blood pressure, spo2, GSR, muscle tension</span></h1>
+                        </div>
+                        <div class="scrollVideoText scrollBust">
+                            <h1 id="scrollBust">Analyzing the <span style="color: #ED1E40; font-size: 40px;"> EGG, gut health</span></h1>
+                        </div>
+                    </div>
+                
+                    <video style="z-index: 1;" src="../media/video/scan.mp4" id="videoScan" type="video/mp4" autoplay muted="muted" playsinline="" controlslist="nodownload"></video>
+                
+                </div>
+            
+            </div>
+            
+            <div class="container"> Imagine the future of health </div>
+            
+            <script>
+            var videoScan = document.getElementById('videoScan');
+            const scrolltext = document.getElementById("scrolltext");
+            
+            $(document).ready(function(){
+              $(videoScan).on(
+                "timeupdate", 
+                function(event){
+                  onTrackedVideoFrame(this.currentTime, this.duration);
+            
+                if(videoScan.currentTime > 0.7){
+                    document.getElementById("scrollHead").style.opacity = "1";
+            
+                    if (videoScan.currentTime > 4.3){
+                        document.getElementById("scrollHead").style.opacity = "0";
+                        document.getElementById("scrollChest").style.opacity = "1";
+                        
+                        if (videoScan.currentTime > 8.5){
+                            document.getElementById("scrollChest").style.opacity = "0";
+                            document.getElementById("scrollArms").style.opacity = "1";
+            
+                            if (videoScan.currentTime > 13.2){
+                            document.getElementById("scrollArms").style.opacity = "0";
+                            document.getElementById("scrollBust").style.opacity = "1";
+            
+                                if (videoScan.currentTime > 16.5){
+                                document.getElementById("scrollBust").style.opacity = "0";
+                                }
+                            }
+                        }
+                    }
+                } 
+            
+                });
+            });
+            
+            function onTrackedVideoFrame(currentTime, duration){
+                $("#current").text(currentTime); //Change #current to currentTime
+                $("#duration").text(duration)
+            }
+            
+            videoScan.addEventListener('ended', (event) => {
+                videoScan.play();
+            });
+            
+            </script>
+        </section>
+            
+        <section>
+            <div id="background-container" class="background-container">
+                <div id="video-container" class="video-container">
+                    <video src="../media/video/output3.mp4" type="video/mp4" id="bgVideo" autoplay muted="muted" playsinline="" controlslist="nodownload"></video>
+                </div>
+            </div>
+            
+            <div id="scroll-container" class="scroll-container">
+            
+                <section id="step0" class="step"></section>
+                
+                <section id="step1" class="step">
+                    <div><h3>Where all your devices are connected</h3></div>
+                </section>
+            
+                <section id="step2" class="step">
+                    <div><h3>Where your “smart home” <br> monitors your health condition</h3></div>
+                </section>
+            
+                <section id="step3" class="step">
+                    <div><h3>Where every time you pick up your phone, <br> drive your car, sit in front of <br> your computer or watch TV</h3></div>
+                </section>
+            
+                <section id="step4" class="step">
+                    <div><h3>the built-in camera monitor your health condition</h3></div>
+                </section>
+            
+                <section id="step5" class="step">
+                    <div><h3>Where the wireless signals around you<br>tracks your health in an unobtrusive manner</h3></div>
+                </section>
+            
+                <section id="step6" class="step">
+                    <div><h3></h3></div>
+                </section>
+            
+                <section id="step7" class="step">
+                    <div><h3>where your digital footprint – wherever you are</h3></div>
+                </section>
+            
+                <section id="step8" class="step">
+                    <div><h3>is turned into health data</h3></div>
+                </section>
+            
+                <section id="step9" class="step">
+                    <div><h3></h3></div>
+                </section>
+            
+                <section id="step10" class="step">
+                    <div><h3></h3></div>
+                </section>
+            <!-- 
+                <section id="step10" class="step">
+                    <div><h3></h3></div>
+                </section> -->
+            
+            </div>
+            
+            <script>
+                
+            //GSAP
+            gsap.registerPlugin(ScrollTrigger);
+            
+            const bgVvideo = document.querySelector("#bgVideo");
+            
+            bgVideo.pause();
+            bgVideo.currentTime = 0;
+            
+            let sections = gsap.utils.toArray(".step");
+            sections.forEach((step, i) => {
+                
+                const tl = gsap.timeline({
+                        defaults: {duration: 1},
+                        scrollTrigger: {
+                        trigger: step,
+                        markers: false,
+                        scrub: true,
+                        start: "center 50%",
+                        end: "bottom top",
+                        pin: true
+                    }
+            
+                })
+                .fromTo(step, {y: 60}, {y: -80})
+                .from(step, {opacity: 0, duration: 0.3}, 0)
+                .to(step, {opacity: 0, duration: 0.2}, 0.8);
+            
+                gsap.fromTo(bgVideo, { currentTime: 3 * i }, {
+                    scrollTrigger: {
+                        trigger: step,
+                        scrub: 2,
+                        start: "top bottom",
+                        end: "bottom bottom",
+                    },
+                    currentTime: 3 * (i + 1),
+                    duration: 3,
+                    ease: "none",
+            
+                });
+            
+            });
+                
+            const container = document.getElementById("background-container");
+            
+            function scrollContainer() {
+                var containerEdge = document.getElementById("scroll-container").getBoundingClientRect();
+            
+                if (0 >= (containerEdge.bottom + window.innerHeight)){
+                    container.style.display = "none";
+                } else {
+                    container.style.display = "flex";
+                }
+            }
+            window.addEventListener("scroll", scrollContainer);
+            </script>
+        </section>
+    
+        <section>
+            <div class="container">
+                in an ultra secure and untraceable manner
+            </div>
+            
+            <div style="position: relative; height: 60vh;"></div>
+            <div id="lineSection">
+                <div class="device bgD" id="basedevice" style="display: none;">
+                    <img id="rotateme1" src="../media/img/icons/Base.svg">
+                    <img id="rotateme2" src="../media/img/icons/Base.svg">
+                    <img id="rotateme3" src="../media/img/icons/Base.svg">
+                    <img id="rotateme4" src="../media/img/icons/Base.svg">
+                    <img id="rotateme5" src="../media/img/icons/Base.svg">
+                    <img id="rotateme6" src="../media/img/icons/Base.svg">
+                </div>
+                <div class="device bgD" id="devices" style="display: none;">
+                    <img src="../media/img/icons/Phone.svg" alt="Phone Icon">
+                    <img src="../media/img/icons/Ear.svg" alt="Earphone Icon">
+                    <img src="../media/img/icons/Pc.svg" alt="Pc Icon">
+                    <img src="../media/img/icons/Watch.svg" alt="Watch Icon">
+                    <img src="../media/img/icons/Cam.svg" alt="Cam Icon">
+                    <img src="../media/img/icons/Glasses.svg" alt="Glasses Icon">
+                </div>
+            
+                <div class="device bgDG piccolo" id="glitched" style="display: none;">
+                    <img src="../media/img/icons/Glitch.svg">
+                    <img src="../media/img/icons/Glitch.svg">
+                    <img src="../media/img/icons/Glitch.svg">
+                    <img src="../media/img/icons/Glitch.svg">
+                    <img src="../media/img/icons/Glitch.svg">
+                    <img src="../media/img/icons/Glitch.svg">
+                </div>
+            
+                <div id="hider" class="hider"></div>
+            
+                <div class="transition" style="display: none;" id="lines">
+                    <div class="line firstLine">
+                        <img src="../media/img/linee/firstLine.svg">
+                    </div>
+                
+                    <div class="line firstConv" id="firstConverge">
+                        <img src="../media/img/linee/firstConv.svg">
+                    </div>
+            
+                    <!-- <img id="crypto" src="../media/img/device/cript.svg"> -->
+                    <div id="crypto"> PRIVACY-FIRST POLICY </div>
+            
+                    <div class="line secondLine" id="lines2">
+                        <img src="../media/img/linee/secondLine.svg">
+                    </div>
+            
+                    <div class="line secondConv" id="secondConverge">
+                        <img src="../media/img/linee/secondConv.svg">
+                    </div>
+                </div>
+            
+                <!-- <img style="position: relative; width: 30%; left: 35%; top: 280vh; opacity: 1;" src="../media/img/device/circle.svg"> -->
+                <img id="brain" class="brain brainPiccolo" src="../media/img/icons/brain.svg">
+            </div>
+            
+            <div class="container">
+                where all your data is combined in one centralized neural network
+            </div>
+            
+            <div style="height: 200vh; width: 100vw; position: relative; background-color: black;">
+            
+            </div>
+            
+            
+            <script>
+            
+            const basedevice = document.getElementById("basedevice");
+            const devices = document.getElementById("devices");
+            const glitched = document.getElementById("glitched");
+            const lines = document.getElementById("lines");
+            const brain = document.getElementById("brain");
+            const hider = document.getElementById("hider");
+            
+            function line() {
+            
+                //entra nella sezione
+                var lineY = document.getElementById("lineSection").getBoundingClientRect();
+            
+                if ((0.45 * window.innerHeight) >= lineY.top && 0 <= (lineY.bottom + window.innerHeight)){
+                    //mostra linee, device fissi e blocco nero
+            
+                    document.getElementById("rotateme1").style.transform += "rotate(3deg)";
+                    document.getElementById("rotateme2").style.transform += "rotate(3deg)";
+                    document.getElementById("rotateme3").style.transform += "rotate(3deg)";
+                    document.getElementById("rotateme4").style.transform += "rotate(3deg)";
+                    document.getElementById("rotateme5").style.transform += "rotate(3deg)";
+                    document.getElementById("rotateme6").style.transform += "rotate(3deg)";
+            
+                    lines.style.display = "block";
+                    brain.style.display = "block";
+            
+                    basedevice.style.display = "block";
+                    basedevice.style.position = "fixed";
+            
+                    devices.style.display = "block";
+                    devices.style.position = "fixed";
+            
+                    hider.style.display = "block";
+            
+                    //prima convergenza
+                    var converge1 = document.getElementById("firstConverge").getBoundingClientRect();
+            
+                    if((0.25 * window.innerHeight) >= converge1.top){
+                        //console.log("convergenza = " + converge1.top);
+                        //rimpicciolisci device e modifica blocco nero
+                        devices.classList.add("piccolo");
+                        basedevice.classList.add("piccolo");
+            
+                        hider.classList.add("hider2");
+            
+                        //passa per il muro
+                        var crypto = document.getElementById("crypto").getBoundingClientRect();
+                        var pad = 0.06 * window.innerHeight;
+            
+                        if((0.3 * (window.innerHeight + pad)) > crypto.top && converge1.top < 0){
+                            //console.log("muro = " + crypto.top);
+                            //sostituisci device
+            
+                            // basedevice.style.display = "none";
+                            // devices.style.display = "none";
+                            glitched.style.display = "block";
+            
+                            //seconda convergenza
+                            var converge2 = document.getElementById("secondConverge").getBoundingClientRect();
+                    
+                            if((0.3 * window.innerHeight) >= converge2.top){
+                                //console.log("convergenza 2 = " + converge2.top);
+                                //rimpicciolisci glitch e fai sparire tutto
+                                glitched.classList.add("piccolissimo");
+                                devices.classList.add("piccolissimo");
+                                basedevice.classList.add("piccolissimo");
+            
+                                brain.classList.remove("brainPiccolo");
+                                brain.classList.add("brainGrande");
+                                if((0.1 * window.innerHeight) >= converge2.top){
+                                    glitched.style.display = "none";
+                                    devices.style.display = "none";
+                                    basedevice.style.display = "none";
+            
+                                    var end = brain.getBoundingClientRect();
+                                    if((-0.15 * window.innerHeight) > end.top){
+                                        hider.style.display = "none";
+                                    }else{
+                                        hider.style.display = "block";
+                                    }
+                                }else{
+                                    glitched.style.display = "block";
+                                }
+                            } else {
+                                // console.log("NO convergenza 2");
+                                basedevice.classList.remove("piccolissimo");
+                                devices.classList.remove("piccolissimo");
+                                glitched.classList.remove("piccolissimo");
+            
+                                glitched.style.display = "block";
+                                brain.classList.remove("brainGrande");
+                                brain.classList.add("brainPiccolo");
+                            }
+            
+                        }else{
+                            //console.log("NO muro");
+                            //sostituisci device
+            
+                            // basedevice.style.display = "block";
+                            // devices.style.display = "block";
+                            glitched.style.display = "none";
+                        }
+            
+                    }else{
+                        //console.log("NO convergenza");
+                        //device normali device e modifica blocco nero
+                        basedevice.classList.remove("piccolo");
+                        devices.classList.remove("piccolo");
+            
+                        glitched.style.display = "none";
+            
+                        hider.classList.remove("hider2");
+                    }
+            
+                } else {
+                    //nascondi linee, device fissi e blocco nero
+                    basedevice.style.display = "none";
+                    basedevice.style.position = "absolute";
+                    devices.style.display = "none";
+                    devices.style.position = "absolute";
+            
+                    glitched.style.display = "none";
+            
+                    lines.style.display = "none";
+                    brain.style.display = "none";
+                    hider.style.display = "none";
+                }
+            
+            }
+            
+            window.addEventListener("scroll", line);
+            
+            </script>
+            
+            <script>
+            
+                var targets = document.querySelectorAll(".container");
+                
+                targets.forEach(target => {
+                const tl = gsap.timeline({
+                        defaults: {duration: 1},
+                        scrollTrigger: {
+                        trigger: target,
+                        markers: false,
+                        scrub: true,
+                        start: "center 50%",
+                        end: "bottom top",
+                        pin: true
+                    }
+                })
+                .fromTo(target, {y: 60}, {y: -80})
+                .from(target, {opacity: 0, duration: 0.3}, 0)
+                .to(target, {opacity: 0, duration: 0.2}, 0.8)
+                });
+                
+            </script>
+        </section>
+        
+        <section>
+            <div class="everything" id="everything" style="z-index: 2;">
+
+                <div id="world" class="world">
+                    <p>Imagine a <span style="color: #ED1E40;">world</span></p>
+                </div>
+            
+                <div class="bbb" id="fix1"><p>everything</p></div>
+                <div class="ddd" id="fix2"><p>you</p></div>
+                <div class="aaa"><p>Where</p></div>
+                <div class="ccc"><p>around</p></div>
+                <div class="aaa" style="top:150vh; left: 5vw;"><p>Knows</p></div>
+                <div class="ccc" style="top:150vh"><p>about</p></div>
+            </div>
+            
+            <script>
+            
+            const world = document.getElementById("world");
+            const fix1 = document.getElementById("fix1");
+            const fix2 = document.getElementById("fix2");
+            
+            function eve() {
+            
+                var every = document.getElementById("everything").getBoundingClientRect();
+            
+                if (every.bottom > window.innerHeight && 0 > every.top) {
+                    // during the section
+                    fix1.style.position = "fixed";
+                    fix1.style.top = "50vh";
+                    fix2.style.position = "fixed";
+                    fix2.style.top = "50vh";
+                    fix2.style.right = "4vw";
+                } else {
+                    fix1.style.position = "absolute";
+                    fix2.style.position = "absolute";
+                    if(every.bottom < window.innerHeight){
+                        fix1.style.top = "150vh";
+                        fix2.style.top = "150vh";
+                        fix2.style.right = "8vw";
+                    }
+                }
+            }
+            
+            window.addEventListener("scroll", eve);
+            
+            </script>
+        </section>
+        
+        <section>
+            <div class="imagine">
+                <p style="width: 70vw;">
+                    That gives birth to an omni-present A.I.
+                    that helps you navigate through your life
+                    by enabling you to understand how your lifestyle affects your health
+                    which habits your body and nervous system is coping with
+                    and which need to change – and how…
+                </p>
+            
+                <div style="width: 30vw;">
+                    <lottie-player src="https://lottie.host/2d43b5df-391b-41c0-b87b-c9ceb80431c3/SomFLu2iHC.json"  background="transparent"  speed="1"  style="width: 25vw; height: 25vw"  loop  autoplay></lottie-player>
+                </div>
+            </div>
+            
+            <div class="imagine">
+                <div style="width: 30vw;">
+                    <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_kvw2mn6a.json"  background="transparent"  speed="0.5"  style="width: 25vw; height: 25vw"  loop  autoplay></lottie-player>
+                </div>
+                
+                <p style="width: 70vw;">
+                    used proactively for your personalized preventive health
+                    empowering you to make qualified informed decisions about your health every day
+                    
+                    and actionable insights    
+                </p>
+            </div>
+        </section>
+    
+        <section data-include="form"></section>
+        <section data-include="footer"></section>
+
+    </div>
+
+    <script>
+    const wait = (delay = 0) =>
+        new Promise(resolve => setTimeout(resolve, delay));
+
+    const setVisible = (elementOrSelector, visible) => 
+        (typeof elementOrSelector === 'string'
+            ? document.querySelector(elementOrSelector)
+            : elementOrSelector
+        ).style.visibility = visible ? 'visible' : 'hidden';
+
+    setVisible('.page', false);
+    setVisible('#loading', true);
+
+    document.addEventListener('DOMContentLoaded', () =>
+        wait(1000).then(() => {
+            setVisible('.page', true);
+            setVisible('#loading', false);
+        }));
+    </script>
+
+
+
+</body>
+
+</html>
