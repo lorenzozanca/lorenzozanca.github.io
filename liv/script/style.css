@@ -854,7 +854,7 @@ a{
 }
 
 .team{
-    --auto-grid-min-size: 200px;
+    --auto-grid-min-size: 300px;
 }
 
 .team li{
@@ -883,7 +883,7 @@ a{
 
 .contributors li img{
     padding-bottom: 4vh; 
-    width: 250px;
+    width: 200px;
 }
 
 .subtitle{
@@ -938,10 +938,22 @@ a{
     border: none;
 }
 
+.social ul{
+    display: flex !important;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+}
+
+.social li{
+    float: right;
+}
+
 .foot { display: table-cell; }
 
 .on { width: 20vw; }
 .on a{ border: none; }
+
 .to { width: 30vw; }
 .foot ul{ display: inline; }
 .foot ul li{
