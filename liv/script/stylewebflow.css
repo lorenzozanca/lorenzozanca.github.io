@@ -183,6 +183,7 @@ ul {
     color: #fff;
     text-decoration: none;
     border-bottom: 1.2px solid #ffffff00;
+    font-weight: normal;
 }
 .menu a:hover {
     transition: all .15s ease-in;
