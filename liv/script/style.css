@@ -358,7 +358,7 @@ a{
     color: #ffffff;
 }
 
-.container {
+.fadingTitle {
     display: flex;
     align-items: center;
     justify-content: center;
