@@ -327,7 +327,7 @@ a{
     width: 100vw;
 }
 .scroll-container {
-    overflow: scroll;
+    overflow-y: scroll;
     width: 100vw;
 }
 .step {
