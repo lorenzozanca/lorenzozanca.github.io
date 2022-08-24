@@ -329,6 +329,7 @@ a{
 }
 .scroll-container {
     overflow: scroll;
+    width: 100vw;
 }
 .step {
     scroll-snap-align: start;
