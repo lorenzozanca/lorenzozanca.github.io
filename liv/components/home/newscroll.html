@@ -1,8 +1,23 @@
-<div id="background-container" class="background-container">
+<!-- <div id="background-container" class="background-container">
     <div id="video-container" class="video-container">
-        <video src="../media/video/output3.mp4" type="video/mp4" id="bgVideo" autoplay muted="muted" playsinline="" controlslist="nodownload"></video>
+        <video src="../media/video/output3.mp4" type="video/mp4" id="bgVideo" preload="auto" muted="muted" playsinline="" controlslist="nodownload"></video>
     </div>
-</div>
+</div> -->
+
+<style>
+    #hero-lightpass{
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  /* max-width: 100vw; */
+  max-height: 100vh;
+  height: 100vh;
+  z-index: -1;
+}
+</style>
+
+<canvas id="hero-lightpass"></canvas>
 
 <div id="scroll-container" class="scroll-container">
 
@@ -12,45 +27,47 @@
         <div><h3>Where all your devices are connected</h3></div>
     </section>
 
-    <section id="step2" class="step">
+    <section id="step2" class="step"></section>
+
+    <section id="step3" class="step">
         <div><h3>Where your “smart home” <br> monitors your health condition</h3></div>
     </section>
 
-    <section id="step3" class="step">
-        <div><h3>Where every time you pick up your phone, <br> drive your car, sit in front of <br> your computer or watch TV</h3></div>
-    </section>
-
     <section id="step4" class="step">
-        <div><h3>the built-in camera monitor your health condition</h3></div>
+        <div><h3>Where every time you pick up your phone,</h3></div>
     </section>
 
     <section id="step5" class="step">
-        <div><h3>Where the wireless signals around you<br>tracks your health in an unobtrusive manner</h3></div>
+        <div><h3>drive your car, sit in front of <br> your computer or watch TV</h3></div>
     </section>
 
     <section id="step6" class="step">
-        <div><h3></h3></div>
+        <div><h3>the built-in camera monitor your health condition</h3></div>
     </section>
 
-    <section id="step7" class="step">
-        <div><h3>where your digital footprint – wherever you are</h3></div>
-    </section>
+    <section id="step7" class="step"></section>
 
     <section id="step8" class="step">
-        <div><h3>is turned into health data</h3></div>
+        <div><h3>Where the wireless signals around you</h3></div>
     </section>
 
     <section id="step9" class="step">
-        <div><h3></h3></div>
+        <div><h3>tracks your health in an unobtrusive manner</h3></div>
     </section>
 
-    <section id="step10" class="step">
-        <div><h3></h3></div>
+    <section id="step10" class="step"></section>
+
+    <section id="step11" class="step">
+        <div><h3>where your digital footprint – wherever you are</h3></div>
     </section>
-<!-- 
-    <section id="step10" class="step">
-        <div><h3></h3></div>
-    </section> -->
+
+    <section id="step12" class="step"></section>
+
+    <section id="step13" class="step">
+        <div><h3>is turned into health data</h3></div>
+    </section>
+
+    <section id="step14" class="step"></section>
 
 </div>
 
@@ -59,10 +76,10 @@
 //GSAP
 gsap.registerPlugin(ScrollTrigger);
 
-const bgVvideo = document.querySelector("#bgVideo");
+// const bgVvideo = document.querySelector("#bgVideo");
 
-bgVideo.pause();
-bgVideo.currentTime = 0;
+// bgVideo.pause();
+// bgVideo.currentTime = 0;
 
 let sections = gsap.utils.toArray(".step");
 sections.forEach((step, i) => {
@@ -83,31 +100,72 @@ sections.forEach((step, i) => {
     .from(step, {opacity: 0, duration: 0.3}, 0)
     .to(step, {opacity: 0, duration: 0.2}, 0.8);
 
-    gsap.fromTo(bgVideo, { currentTime: 3 * i }, {
-        scrollTrigger: {
-            trigger: step,
-            scrub: 2,
-            start: "top bottom",
-            end: "bottom bottom",
-        },
-        currentTime: 3 * (i + 1),
-        duration: 3,
-        ease: "none",
+    // gsap.fromTo(bgVideo, { currentTime: 3 * i }, {
+    //     scrollTrigger: {
+    //         trigger: step,
+    //         scrub: 2,
+    //         start: "top bottom",
+    //         end: "bottom bottom",
+    //     },
+    //     currentTime: 3 * (i + 1),
+    //     duration: 3,
+    //     ease: "none",
 
-    });
+    // });
 
 });
     
-const container = document.getElementById("background-container");
+    console.clear();
 
-function scrollContainer() {
-    var containerEdge = document.getElementById("scroll-container").getBoundingClientRect();
+    const canvas = document.getElementById("hero-lightpass");
+    const context = canvas.getContext("2d");
 
-    if (0 >= (containerEdge.bottom + window.innerHeight)){
-        container.style.display = "none";
-    } else {
-        container.style.display = "flex";
+    canvas.width = 1280;
+    canvas.height = 720;
+
+    const frameCount = 599;
+    const currentFrame = index => (
+        `../media/scrolling/${(index + 1).toString().padStart(1, '0')}.webp`
+    );
+
+    const images = []
+    const airpods = {
+        frame: 0
+    };
+
+    for (let i = 0; i < frameCount; i++) {
+        const img = new Image();
+        img.src = currentFrame(i);
+        images.push(img);
     }
-}
-window.addEventListener("scroll", scrollContainer);
+
+    gsap.to(airpods, {
+        frame: frameCount - 1,
+        snap: "frame",
+        scrollTrigger: {
+        scrub: 0.5
+        },
+        onUpdate: render
+    });
+
+    images[0].onload = render;
+
+    function render() {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.drawImage(images[airpods.frame], 0, 0);
+    }
+
+
+// const container = document.getElementById("background-container");
+
+// function scrollContainer() {
+//     var containerEdge = document.getElementById("scroll-container").getBoundingClientRect();
+
+//     if (0 >= (containerEdge.bottom + window.innerHeight)){
+//         container.style.display = "none";
+//     } else {
+//         container.style.display = "flex";
+//     }
+// }
+// window.addEventListener("scroll", scrollContainer);
 </script>
