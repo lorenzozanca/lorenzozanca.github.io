@@ -6,6 +6,9 @@ h3{
  font-size: 6vw;
 }
 
+.cookies-new{
+    width: 90vw;
+}
 .cookies-container{
     justify-content: flex-end;
     flex-direction: row;
