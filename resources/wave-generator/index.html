@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Dot Wave Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.7/dat.gui.min.js"></script>
+</head>
+
+<body>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        canvas {
+            position: fixed;
+        }
+    </style>
+
+    <script>
+        // Set up scene, camera, and renderer
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(30, 30, 20);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true, preserveDrawingBuffer: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Check if the user is interacting with the GUI
+        let isGUIFocused = false;
+
+        // Function to wait for the GUI element to be available and add event listeners
+        function waitForElement(selector, callback) {
+            const element = document.querySelector(selector);
+            if (element) {
+                callback(element);
+            } else {
+                requestAnimationFrame(() => waitForElement(selector, callback));
+            }
+        }
+
+        // Function to add event listeners once the GUI is rendered
+        function addGUIFocusListeners() {
+            waitForElement('.dg', (guiElement) => {
+                guiElement.addEventListener('mouseenter', () => {
+                    isGUIFocused = true;
+                });
+                guiElement.addEventListener('mouseleave', () => {
+                    isGUIFocused = false;
+                });
+            });
+        }
+
+        // Call the function after initializing the GUI
+        addGUIFocusListeners();
+
+        // Mouse and Keyboard Controls
+        let isDragging = false;
+        let previousMousePosition = {
+            x: 0,
+            y: 0
+        };
+
+        const rotationSpeed = 0.05;
+        const zoomSpeed = 1;
+
+        // Mouse down to start dragging
+        window.addEventListener('mousedown', function (event) {
+            if (!isGUIFocused) {  // Prevent dragging if GUI is focused
+                isDragging = true;
+                previousMousePosition = { x: event.clientX, y: event.clientY };
+            }
+        });
+
+        // Mouse move to rotate the camera
+        window.addEventListener('mousemove', function (event) {
+            if (!isDragging || isGUIFocused) return;  // Skip if GUI is focused
+
+            const deltaX = event.clientX - previousMousePosition.x;
+            const deltaY = event.clientY - previousMousePosition.y;
+
+            const rotationX = deltaX * rotationSpeed;
+            const rotationY = deltaY * rotationSpeed;
+
+            camera.position.x -= rotationX;
+            camera.position.y += rotationY;
+
+            camera.lookAt(scene.position);
+
+            previousMousePosition = { x: event.clientX, y: event.clientY };
+        });
+
+        // Stop dragging on mouse up
+        window.addEventListener('mouseup', function () {
+            isDragging = false;
+        });
+
+        // Zoom with keyboard (W for zoom in, S for zoom out)
+        window.addEventListener('keydown', function (event) {
+            if (isGUIFocused) return;  // Prevent zooming if GUI is focused
+
+            if (event.key === 'w') {
+                camera.position.z -= zoomSpeed;
+            } else if (event.key === 's') {
+                camera.position.z += zoomSpeed;
+            }
+            camera.lookAt(scene.position);
+        });
+
+        // Function to update the camera position based on GUI settings
+        function updateCameraFromGUI() {
+            const x = Math.sin(THREE.Math.degToRad(settings.cameraAngleX)) * settings.zoom;
+            const y = Math.sin(THREE.Math.degToRad(settings.cameraAngleY)) * settings.zoom;
+            const z = Math.sin(THREE.Math.degToRad(settings.cameraAngleZ)) * settings.zoom;
+
+            camera.position.set(x, y, z);
+            camera.lookAt(scene.position);
+        }
+
+        // Function to sync GUI values with camera position and zoom
+        function updateGUIFromCamera() {
+            const spherical = new THREE.Spherical();
+            spherical.setFromVector3(camera.position);
+
+            settings.cameraAngleX = THREE.Math.radToDeg(spherical.theta);
+            settings.cameraAngleY = THREE.Math.radToDeg(spherical.phi);
+            settings.zoom = camera.position.length();
+
+            gui.updateDisplay();  // Update GUI to reflect new values
+        }
+
+        // GUI setup
+        const gui = new dat.GUI();
+        const settings = {
+            waveWidth: 35,
+            waveHeight: 35,
+            dotSpacing: 0.5,
+            dotSize: 0.12,
+            color: '#c3a8fe',
+            cameraAngleX: 360,
+            cameraAngleY: 284,
+            cameraAngleZ: 148,
+            waveType: 'sinCos',
+            zoom: 20,
+            backgroundColor: '#000000',
+            fadeEffect: 0.9,
+            useGradient: false,
+            gradientStartColor: '#ffffff',
+            gradientEndColor: '#6333cc',
+            shadowOpacity: 0.5,
+            includeBackground: true
+        };
+
+        scene.background = new THREE.Color(settings.backgroundColor);
+
+        const geometry = new THREE.BufferGeometry();
+        let points;
+
+        // Material for the dots
+        let material = new THREE.PointsMaterial({ size: settings.dotSize, sizeAttenuation: true, transparent: true, color: settings.color, map: new THREE.TextureLoader().load('https://threejs.org/examples/textures/sprites/disc.png') });
+        material.alphaTest = 0.5;
+
+        // Function to create gradient texture
+        function createGradientTexture(startColor, endColor) {
+            const size = 256;
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
+            const context = canvas.getContext('2d');
+            const gradient = context.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, startColor);
+            gradient.addColorStop(1, endColor);
+
+            context.fillStyle = gradient;
+            context.fillRect(0, 0, size, size);
+
+            // Add transparency by clearing the outer regions
+            context.globalCompositeOperation = 'destination-in';
+            context.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
+            context.fill();
+
+            return canvas;
+        }
+
+        function updateMaterial() {
+            if (settings.useGradient) {
+                const gradientTexture = new THREE.CanvasTexture(createGradientTexture(settings.gradientStartColor, settings.gradientEndColor));
+                gradientTexture.minFilter = THREE.LinearFilter;
+                material.map = gradientTexture;
+            } else {
+                // Only change the map back to disc if useGradient is false
+                if (material.map instanceof THREE.CanvasTexture) {
+                    material.map = new THREE.TextureLoader().load('https://threejs.org/examples/textures/sprites/disc.png');
+                }
+            }
+            material.needsUpdate = true;
+        }
+
+        // Function to generate wave shape
+        function generateWave() {
+            const width = settings.waveWidth;
+            const height = settings.waveHeight;
+            const spacing = settings.dotSpacing;
+            const rows = Math.floor(height / spacing);
+            const cols = Math.floor(width / spacing);
+            const positions = new Float32Array(rows * cols * 3);
+
+            let index = 0;
+            for (let i = 0; i < rows; i++) {
+                for (let j = 0; j < cols; j++) {
+                    const x = (j - cols / 2) * spacing;
+                    const y = (i - rows / 2) * spacing;
+                    let z;
+                    if (settings.waveType === 'sinCos') {
+                        z = Math.sin((i / rows) * Math.PI * 4) * Math.cos((j / cols) * Math.PI * 4) * 2;
+                    } else if (settings.waveType === 'sin') {
+                        z = Math.sin((i / rows) * Math.PI * 4) * 2;
+                    } else if (settings.waveType === 'cos') {
+                        z = Math.cos((j / cols) * Math.PI * 4) * 2;
+                    } else if (settings.waveType === 'fancy1') {
+                        z = Math.sin((i / rows) * Math.PI * 4) * Math.sin((j / cols) * Math.PI * 4) * 3;
+                    } else if (settings.waveType === 'fancy2') {
+                        z = Math.sin((i / rows) * Math.PI * 6) * Math.cos((j / cols) * Math.PI * 3) * 4;
+                    } else {
+                        z = 0;
+                    }
+                    positions.set([x, y, z], index);
+                    index += 3;
+                }
+            }
+            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+            if (points) {
+                scene.remove(points);
+            }
+            points = new THREE.Points(geometry, material);
+            scene.add(points);
+        }
+
+        // Add GUI controls
+        gui.add(settings, 'waveWidth', 10, 50, 1).onChange(generateWave);
+        gui.add(settings, 'waveHeight', 5, 50, 1).onChange(generateWave);
+        gui.add(settings, 'dotSpacing', 0.01, 1, 0.1).onChange(generateWave);
+        gui.add(settings, 'dotSize', 0.01, 0.5).onChange(() => {
+            material.size = settings.dotSize;
+        });
+        gui.addColor(settings, 'color').onChange(() => {
+            material.color.set(settings.color);
+        });
+        gui.add(settings, 'waveType', ['sinCos', 'sin', 'cos', 'fancy1', 'fancy2']).onChange(generateWave);
+        gui.add(settings, 'cameraAngleX', 0, 360).onChange(updateCameraFromGUI);
+        gui.add(settings, 'cameraAngleY', 0, 360).onChange(updateCameraFromGUI);
+        gui.add(settings, 'cameraAngleZ', 0, 360).onChange(updateCameraFromGUI);
+        gui.add(settings, 'zoom', 10, 100).onChange(updateCameraFromGUI);
+        gui.addColor(settings, 'backgroundColor').onChange(() => {
+            scene.background.set(settings.backgroundColor);
+        });
+        gui.add(settings, 'fadeEffect', 0.1, 1).onChange(() => {
+            material.opacity = settings.fadeEffect;
+            material.needsUpdate = true;
+        });
+        gui.add(settings, 'useGradient').onChange(() => {
+            updateMaterial();
+        });
+        gui.addColor(settings, 'gradientStartColor').onChange(() => {
+            updateMaterial();
+        });
+        gui.addColor(settings, 'gradientEndColor').onChange(() => {
+            updateMaterial();
+        });
+        gui.add(settings, 'shadowOpacity', 0, 1).onChange(() => {
+            material.transparent = true;
+            material.opacity = settings.shadowOpacity;
+            material.needsUpdate = true;
+        });
+        gui.add(settings, 'includeBackground').name('Include Background');
+
+        // Initial wave generation
+        generateWave();
+
+        // Set initial camera position based on GUI values
+        updateCameraFromGUI();
+
+        // Render loop
+        function render() {
+            requestAnimationFrame(render);
+            renderer.render(scene, camera);
+        }
+
+        render();
+
+        // Sync GUI controls with camera after interaction
+        window.addEventListener('mousemove', () => {
+            if (!isGUIFocused) {
+                updateGUIFromCamera();
+            }
+        });
+        window.addEventListener('keydown', () => {
+            if (!isGUIFocused) {
+                updateGUIFromCamera();
+            }
+        });
+
+        // Handle window resizing
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        function downloadImage() {
+            const originalBackground = scene.background;  // Save the original background
+            if (!settings.includeBackground) {
+                scene.background = null;  // Remove the background for the download (transparent)
+            }
+
+            const originalSize = { width: renderer.domElement.width, height: renderer.domElement.height };
+
+            // Increase resolution by setting a higher render size (e.g., 4x)
+            const scaleFactor = 4;  // Adjust this for higher/lower resolution
+            renderer.setSize(originalSize.width * scaleFactor, originalSize.height * scaleFactor, false);
+            camera.updateProjectionMatrix();
+
+            // Render scene with updated size
+            renderer.render(scene, camera);
+
+            // Download the image
+            const link = document.createElement('a');
+            link.href = renderer.domElement.toDataURL('image/png', 1.0);
+            link.download = '3d_dot_wave_high_res.png';
+            link.click();
+
+            // Restore the original renderer size
+            renderer.setSize(originalSize.width, originalSize.height);
+            camera.updateProjectionMatrix();
+
+            scene.background = originalBackground;  // Restore the background after download
+        }
+
+        // Add a button to download the image
+        const downloadButton = document.createElement('button');
+        downloadButton.textContent = 'Download';
+        downloadButton.style.position = 'fixed';
+        downloadButton.style.bottom = '1rem';
+        downloadButton.style.right = '1rem';
+        document.body.appendChild(downloadButton);
+        downloadButton.addEventListener('click', downloadImage);
+    </script>
+</body>
+
+</html>

@@ -1,289 +1,187 @@
-<html>
+<html lang="en">
+
 <head>
-  <title>lorenzozanca.com</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lorenzo on GitHub</title>
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script type="module" src="https://lorenzozanca.github.io/script.js"></script>
+  <link rel="stylesheet" href="./public/style.css">
+  <script type="module" src="./public/js/script.js"></script>
+
+  <link rel="icon" type="image/png" href="./public/assets/favicon/favicon-48x48.png" sizes="48x48" />
+  <link rel="icon" type="image/svg+xml" href="./public/assets/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="./public/assets/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./public/assets/favicon/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Lorenzo" />
+  <link rel="manifest" href="./public/assets/favicon/site.webmanifest" />
 </head>
+
 <body>
-  
+
+  <!-- Fancy Navigation -->
+
   <div id="menu">
-		<div class="hamburger">
-			<div class="line"></div>
-			<div class="line"></div>
-			<div class="line"></div>
-		</div>
-		<div class="menu-inner">
-			
-			<ul>
+    <div class="hamburger">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+    <div class="menu-inner">
+      <img src="./public/assets/logo.svg" alt="Lorenzo Zanchetta Logo">
+      <ul>
+        <li>About Me:</li>
         <li><a href="https://lorenzozanca.com/">Portfolio</a></li>
         <li><a href="https://www.linkedin.com/in/lorenzozanca">Linkedin</a></li>
-	<li><a href="https://lorenzozanca.github.io/liv/">LIV</a></li>
-			</ul>
-		</div>
-  
-		<svg version="1.1" id="blob"xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-			<path id="blob-path" d="M60,500H0V0h60c0,0,20,172,20,250S60,900,60,500z"/>
-		</svg>
+      </ul>
+      <ul>
+        <li>Resources:</li>
+        <li><a href="./resources/wave-generator/">Wave Gen</a></li>
+      </ul>
+    </div>
+
+    <svg version="1.1" id="blob" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <path id="blob-path" d="M60,500H0V0h60c0,0,20,172,20,250S60,900,60,500z" />
+    </svg>
   </div>
 
-  <div style="width: 60px; height: 100%; position: absolute; right: 0; background-color: #111111; z-index: 2;"></div>
-  <div style="height: 60px; width: 100%; position: absolute; top: 0; background-color: #111111; z-index: 2;"></div>
-  <div style="height: 60px; width: 100%; position: absolute; bottom: 0; background-color: #111111; z-index: 2;"></div>
-
-
-  <style>
-		#menu {
-			height: 100%;
-			position: fixed;
-			background-color: #111111;
-			width: 300px;
-			transition: 1000ms all cubic-bezier(0.19, 1, 0.22, 1);
-			transform: translateX(-100%);
-			left: 60px;
-      z-index: 3;
-		}
-
-		#menu.expanded {
-			transform: translateX(0%);
-			left: 0px;
-		}
-
-		.menu-inner {
-			width: 100%;
-			height: 100%;
-			position: relative;
-		}
-
-		#blob {
-			top: 0;
-			z-index: -1;
-			right: 60px;
-			transform: translateX(100%);
-			height: 100%;
-			position: absolute;
-		}
-
-		#blob-path {
-			height: 100%;
-			fill:  #111111;
-		}
-
-		.hamburger {
-			right: 20px;
-			position: absolute;
-			width: 20px;
-			height: 16px;
-			margin-top: -25px;
-		}
-
-		.hamburger .line {
-			width: 100%;
-			height: 2px;
-			background-color: #fff;
-			position: relative;
-      margin-top: 14px;
-		}
-
-		.hamburger .line:nth-child(2) {
-			top: 50%;
-			margin-top: -2px;
-		}
-
-		.hamburger .line:nth-child(3) {
-			bottom: 0;
-		}
-
-		ul {
-			padding: 0;
-			list-style: none;
-			width: 80%;
-			margin-left: 10%;
-			position: absolute;
-			top: 10px;
-		}
-
-		ul li {
-			color: #fff;
-			font-family: sans-serif;
-			padding: 20px 20px 0px 20px;
-      text-align: left;
-		}
-
-    ul li a {
-			text-decoration: none;
-      color: #fff; 
-      font-size: 1vw;
-		}
-  </style>
+  <div class="page-border">
+  </div>
 
   <script>
-  $(window).load(function(){
-    var height = window.innerHeight,
-    x= 0, y= height/2,
-    curveX = 10,
-    curveY = 0,
-    targetX = 0,
-    xitteration = 0,
-    yitteration = 0,
-    menuExpanded = false;
-    
-    blob = $('#blob'),
-    blobPath = $('#blob-path'),
+    $(window).load(function () {
+      var height = window.innerHeight,
+        x = 0, y = height / 2,
+        curveX = 10,
+        curveY = 0,
+        targetX = 0,
+        xitteration = 0,
+        yitteration = 0,
+        menuExpanded = false;
 
-    hamburger = $('.hamburger');
+      blob = $('#blob'),
+        blobPath = $('#blob-path'),
 
-    $(this).on('mousemove', function(e){
-      x = e.pageX;
-      
-      y = e.pageY;
-    });
+        hamburger = $('.hamburger');
 
-    $('.hamburger, .menu-inner').on('mouseenter', function(){
-      $(this).parent().addClass('expanded');
-      menuExpanded = true;
-    });
+      $(this).on('mousemove', function (e) {
+        x = e.pageX;
 
-    $('.menu-inner').on('mouseleave', function(){
-      menuExpanded = false;
-      $(this).parent().removeClass('expanded');
-    });
+        y = e.pageY;
+      });
 
-    function easeOutExpo(currentIteration, startValue, changeInValue, totalIterations) {
-      return changeInValue * (-Math.pow(2, -10 * currentIteration / totalIterations) + 1) + startValue;
-    }
+      $('.hamburger, .menu-inner').on('mouseenter', function () {
+        $(this).parent().addClass('expanded');
+        menuExpanded = true;
+      });
 
-    var hoverZone = 150;
-    var expandAmount = 20;
-    
-    function svgCurve() {
-      if ((curveX > x-1) && (curveX < x+1)) {
-        xitteration = 0;
-      } else {
-        if (menuExpanded) {
-          targetX = 0;
-        } else {
+      $('.menu-inner').on('mouseleave', function () {
+        menuExpanded = false;
+        $(this).parent().removeClass('expanded');
+      });
+
+      function easeOutExpo(currentIteration, startValue, changeInValue, totalIterations) {
+        return changeInValue * (-Math.pow(2, -10 * currentIteration / totalIterations) + 1) + startValue;
+      }
+
+      var hoverZone = 250;
+      var expandAmount = 20;
+
+      function svgCurve() {
+        if ((curveX > x - 1) && (curveX < x + 1)) {
           xitteration = 0;
-          if (x > hoverZone) {
+        } else {
+          if (menuExpanded) {
             targetX = 0;
           } else {
-            targetX = -(((60+expandAmount)/100)*(x-hoverZone));
-          }			
+            xitteration = 0;
+            if (x > hoverZone) {
+              targetX = 0;
+            } else {
+              targetX = -(((60 + expandAmount) / 100) * (x - hoverZone));
+            }
+          }
+          xitteration++;
         }
-        xitteration++;
+
+        if ((curveY > y - 1) && (curveY < y + 1)) {
+          yitteration = 0;
+        } else {
+          yitteration = 0;
+          yitteration++;
+        }
+
+        curveX = easeOutExpo(xitteration, curveX, targetX - curveX, 100);
+        curveY = easeOutExpo(yitteration, curveY, y - curveY, 100);
+
+        var anchorDistance = 200;
+        var curviness = anchorDistance - 40;
+
+        var newCurve2 = "M60," + height + "H0V0h60v" + (curveY - anchorDistance) + "c0," + curviness + "," + curveX + "," + curviness + "," + curveX + "," + anchorDistance + "S60," + (curveY) + ",60," + (curveY + (anchorDistance * 2)) + "V" + height + "z";
+
+        blobPath.attr('d', newCurve2);
+
+        blob.width(curveX + 60);
+
+        hamburger.css('transform', 'translate(' + curveX + 'px, ' + curveY + 'px)');
+
+        $('h2').css('transform', 'translateY(' + curveY + 'px)');
+        window.requestAnimationFrame(svgCurve);
       }
 
-      if ((curveY > y-1) && (curveY < y+1)) {
-        yitteration = 0;
-      } else {
-        yitteration = 0;
-        yitteration++;	
-      }
-
-      curveX = easeOutExpo(xitteration, curveX, targetX-curveX, 100);
-      curveY = easeOutExpo(yitteration, curveY, y-curveY, 100);
-
-      var anchorDistance = 200;
-      var curviness = anchorDistance - 40;
-
-      var newCurve2 = "M60,"+height+"H0V0h60v"+(curveY-anchorDistance)+"c0,"+curviness+","+curveX+","+curviness+","+curveX+","+anchorDistance+"S60,"+(curveY)+",60,"+(curveY+(anchorDistance*2))+"V"+height+"z";
-
-      blobPath.attr('d', newCurve2);
-
-      blob.width(curveX+60);
-
-      hamburger.css('transform', 'translate('+curveX+'px, '+curveY+'px)');
-      
-      $('h2').css('transform', 'translateY('+curveY+'px)');
       window.requestAnimationFrame(svgCurve);
-    }
 
-    window.requestAnimationFrame(svgCurve);
-    
-  });
+    });
   </script>
 
-  <div id="particles-js" style="filter: blur(50px); position: absolute; width: 100%; height: 100%;"></div>
+  <!-- Background Animation -->
 
-  <style>
-  html,body{ width:100%; height:100%; background:#111; }
+  <div id="particles-js"></div>
 
-  #particles-js{
-    width: 100%;
-    height: 100%;
-    background-color: #000000;
-    background-image: url('');
-    background-size: cover;
-    background-position: 50% 50%;
-    background-repeat: no-repeat;
-  }
-  </style>
-  <!-- scripts -->
-  <script src="https://lorenzozanca.github.io/particles.js"></script>
-  <script src="https://lorenzozanca.github.io/app.js"></script>
-  
-  <div>
-      <div class="animate-me">
-        lorenzozanca.com
-      </div>
-      <div class="animate-me">
-        lorenzozanca.com
-      </div>
-      <div class="animate-me">
-        lorenzozanca.com
-      </div>
-      <div class="animate-me">
-        lorenzozanca.com
-      </div>
-      <div class="animate-me">
-        lorenzozanca.com
-      </div>
-      <div class="animate-me">
-        lorenzozanca.com
-      </div>
-      <div class="animate-me">
-        lorenzozanca.com
-      </div>
-      <div class="animate-me">
-        lorenzozanca.com
-      </div>
-      <div class="animate-me">
-        lorenzozanca.com
-      </div>
-        <div class="animate-me">
-        lorenzozanca.com
-      </div>
-        <div class="animate-me">
-        lorenzozanca.com
-      </div>
-        <div class="animate-me">
-        lorenzozanca.com
-      </div>
+  <script src="./public/js/particles/particles.js"></script>
+  <script src="./public/js/particles/app.js"></script>
+
+  <!-- Lorenzozanca.com Text Animation -->
+
+  <div class="text-animation">
+    <div class="animate-me">
+      lorenzozanca.com
     </div>
-  
-  <style>
-    
-    body {
-        color: #fff;
-        font-weight: 400;
-        font-size: 2vw;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        text-transform: uppercase;
-        font-family: "Poppins", sans-serif;
-        height: 100vh;
-        box-sizing: border-box;
-        letter-spacing: 6px;
-        margin: 0;
-        line-height: 1.2;
-      }
+    <div class="animate-me">
+      lorenzozanca.com
+    </div>
+    <div class="animate-me">
+      lorenzozanca.com
+    </div>
+    <div class="animate-me">
+      lorenzozanca.com
+    </div>
+    <div class="animate-me">
+      lorenzozanca.com
+    </div>
+    <div class="animate-me">
+      lorenzozanca.com
+    </div>
+    <div class="animate-me">
+      lorenzozanca.com
+    </div>
+    <div class="animate-me">
+      lorenzozanca.com
+    </div>
+    <div class="animate-me">
+      lorenzozanca.com
+    </div>
+    <div class="animate-me">
+      lorenzozanca.com
+    </div>
+    <div class="animate-me">
+      lorenzozanca.com
+    </div>
+    <div class="animate-me">
+      lorenzozanca.com
+    </div>
+  </div>
 
-      span {
-        display: inline-block;
-      }
-  </style>
-  
- </body>
+</body>
+
 </html>
